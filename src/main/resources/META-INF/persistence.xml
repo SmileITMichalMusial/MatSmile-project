@@ -1,0 +1,34 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="primary">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+              <class>pl.matemania.domain.topics.TopicLayer1</class>
+        <!--   <class>pl.poradniausmiech.domain.Employee</class>
+          <class>pl.poradniausmiech.domain.Contact</class>
+          <class>pl.poradniausmiech.domain.pricelist.PriceListLayer1</class>
+          <class>pl.poradniausmiech.domain.pricelist.PriceListLayer2</class>
+          <class>pl.poradniausmiech.domain.pages.PagesLayer1</class>
+          <class>pl.poradniausmiech.domain.pages.PagesLayer2</class>
+          <class>pl.poradniausmiech.domain.Logs</class> -->
+
+
+        <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <!-- <property name="hibernate.connection.url" value="jdbc:mysql://sql.agnieszkadwa.nazwa.pl:3306/agnieszkadwa_poradniausmiech?serverTimezone=UTC" /> -->
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://s53.hekko.net.pl:3306/musialm_matemania?serverTimezone=UTC"/>
+
+            <property name="hibernate.connection.username" value="musialm_matemania"/>
+            <property name="hibernate.connection.password" value="matemania123"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
