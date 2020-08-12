@@ -4,14 +4,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "topic_layer_1")
+@Table(name = "topic_layer_2")
 
-public class TopicLayer1 {
+public class TopicLayer2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_layer_1", unique = true, nullable = false)
-    private Integer idLayer1;
+    @Column(name = "id_layer_2", unique = true, nullable = false)
+    private Integer idLayer2;
+
+    @Column(name = "fk_id_layer_1", nullable = false)
+    private Integer fkIdLayer1;
 
     @Column(name = "order_id", nullable = false)
     private Integer orderId;
@@ -32,16 +35,24 @@ public class TopicLayer1 {
     @Column(name = "date_modified", nullable = true)
     private Date dateModified;
 
-    public TopicLayer1() {
+    public TopicLayer2() {
 
     }
 
-    public Integer getIdLayer1() {
-        return idLayer1;
+    public Integer getIdLayer2() {
+        return idLayer2;
     }
 
-    public void setIdLayer1(Integer idLayer1) {
-        this.idLayer1 = idLayer1;
+    public void setIdLayer2(Integer idLayer2) {
+        this.idLayer2 = idLayer2;
+    }
+
+    public Integer getFkIdLayer1() {
+        return fkIdLayer1;
+    }
+
+    public void setFkIdLayer1(Integer fkIdLayer1) {
+        this.fkIdLayer1 = fkIdLayer1;
     }
 
     public Integer getOrderId() {
