@@ -8,7 +8,9 @@
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-              <class>pl.matemania.domain.topics.TopicLayer1</class>
+        <class>pl.matemania.domain.topics.TopicLayer1</class>
+        <class>pl.matemania.domain.topics.TopicLayer2</class>
+        <class>pl.matemania.domain.topics.TopicLayer3</class>
         <!--   <class>pl.poradniausmiech.domain.Employee</class>
           <class>pl.poradniausmiech.domain.Contact</class>
           <class>pl.poradniausmiech.domain.pricelist.PriceListLayer1</class>
