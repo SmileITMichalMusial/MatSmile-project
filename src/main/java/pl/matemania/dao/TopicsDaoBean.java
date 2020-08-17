@@ -50,7 +50,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .sorted(Comparator.comparing(TopicLayer1::getOrderId))
                 .collect(Collectors.toList());
 
-
+topicLayer1List.stream().filter(l -> l.getIdLayer1().equals(2)).count();
 
         return topicLayer1List;
     }
