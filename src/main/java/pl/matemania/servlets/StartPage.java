@@ -4,6 +4,7 @@ import pl.matemania.dao.TopicsDao;
 import pl.matemania.domain.topics.TopicLayer1;
 import pl.matemania.domain.topics.TopicLayer2;
 import pl.matemania.domain.topics.TopicLayer3;
+import pl.matemania.domain.topics.TopicLayer4;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -29,10 +30,12 @@ public class StartPage extends HttpServlet {
         List<TopicLayer1> topicsLayer1List = topicsDao.getTopicLayer1FromDbSortedByOrderId();
         List<TopicLayer2> topicsLayer2List = topicsDao.getTopicLayer2FromDbSortedByOrderId();
         List<TopicLayer3> topicsLayer3List = topicsDao.getTopicLayer3FromDbSortedByOrderId();
+        List<TopicLayer4> topicsLayer4List = topicsDao.getTopicLayer4FromDbSortedByOrderId();
 
         request.getSession().setAttribute("topicsLayer1List",topicsLayer1List);
         request.getSession().setAttribute("topicsLayer2List",topicsLayer2List);
         request.getSession().setAttribute("topicsLayer3List",topicsLayer3List);
+        request.getSession().setAttribute("topicsLayer4List",topicsLayer4List);
 
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);

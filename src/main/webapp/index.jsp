@@ -5,6 +5,7 @@
 <% request.getAttribute("topicsLayer1List"); %>
 <% request.getAttribute("topicsLayer2List"); %>
 <% request.getAttribute("topicsLayer3List"); %>
+<% request.getAttribute("topicsLayer4List"); %>
 
 
 <!DOCTYPE html>

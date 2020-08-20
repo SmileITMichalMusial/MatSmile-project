@@ -40,7 +40,7 @@
                   <c:if test="${topicLayer2Loop.getIdLayer2() == topicLayer3Loop.getFkIdLayer2()}">
                     <ul class="nav nav-treeview">
                       <li class="nav-item has-treeview">
-                        <a href="01_01_Liczby.jsp" class="nav-link">
+                        <a href="TheoryViewServlet?idLayer3=${topicLayer3Loop.getIdLayer3()}" class="nav-link">
                           <i class="far fa-check-circle nav-icon"></i>
                           <p>
                               ${topicLayer3Loop.getName()}

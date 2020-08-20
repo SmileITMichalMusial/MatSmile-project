@@ -5,3 +5,19 @@ Wildfly Admin console
 Address: http://localhost:9990/
 login: michal
 pass: Li..1
+
+---------- rownania matematyczne: ------
+1) napisac na stonie
+https://latex.codecogs.com/legacy/eqneditor/editor.php
+
+2) wkleic do
+https://www.codecogs.com/latex/eqneditor.php
+
+3) skopiowa opcje html, np:
+<img src="https://latex.codecogs.com/gif.latex?\frac{x^2}{2}&plus;\int&space;sin\alpha&space;d\alpha" title="\frac{x^2}{2}+\int sin\alpha d\alpha" />
+
+-- zwijanie menu ? --
+
+webapp/build/js/Treeview.js
+
+ORM mapping dodajemy pozniej do pliku persistance.xml

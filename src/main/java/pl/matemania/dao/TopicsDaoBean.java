@@ -3,6 +3,7 @@ package pl.matemania.dao;
 import pl.matemania.domain.topics.TopicLayer1;
 import pl.matemania.domain.topics.TopicLayer2;
 import pl.matemania.domain.topics.TopicLayer3;
+import pl.matemania.domain.topics.TopicLayer4;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -38,6 +39,13 @@ public class TopicsDaoBean implements TopicsDao {
         return topicLayer3;
     }
 
+    @Override
+    public TopicLayer4 getSingleTopicLayer4(int id1) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        TopicLayer4 topicLayer4 = entityManager.find(TopicLayer4.class, id1);
+        return topicLayer4;
+    }
+
 
     @Override
     public List<TopicLayer1> getTopicLayer1FromDbSortedByOrderId() {
@@ -49,8 +57,6 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .sorted(Comparator.comparing(TopicLayer1::getOrderId))
                 .collect(Collectors.toList());
-
-topicLayer1List.stream().filter(l -> l.getIdLayer1().equals(2)).count();
 
         return topicLayer1List;
     }
@@ -81,6 +87,20 @@ topicLayer1List.stream().filter(l -> l.getIdLayer1().equals(2)).count();
                 .collect(Collectors.toList());
 
         return topicLayer3List;
+    }
+
+    @Override
+    public List<TopicLayer4> getTopicLayer4FromDbSortedByOrderId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer4> topicLayer4List = entityManager.createQuery("FROM TopicLayer4 ").getResultList();
+        topicLayer4List = topicLayer4List
+                .stream()
+                .sorted(Comparator.comparing(TopicLayer4::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer4List;
     }
 
 }
