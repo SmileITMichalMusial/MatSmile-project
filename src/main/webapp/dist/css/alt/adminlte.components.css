@@ -4110,9 +4110,11 @@ html.maximized-card {
 
 .card-title {
   float: left;
+  width: 100%;
   font-size: 1.1rem;
   font-weight: 400;
   margin: 0;
+  text-align: center;
 }
 
 .card-text {
