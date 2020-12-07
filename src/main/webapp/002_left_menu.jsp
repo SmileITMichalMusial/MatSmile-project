@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<c:set var="login" scope="session" value="${login}"/>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Logo -->
@@ -14,7 +14,31 @@
 
   <!-- Menu rozwijalne -->
   <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
 
+        <c:if test="${empty login}">
+
+        <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">Niezalogowany</a>
+
+        </c:if>
+
+
+        <c:if test="${not empty login}">
+
+        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">${login}</a>
+
+        </c:if>
+
+      </div>
+
+    </div>
     <!-- Sidebar Menu -->
     <nav class="mt-2">
 

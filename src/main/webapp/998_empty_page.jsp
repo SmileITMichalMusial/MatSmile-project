@@ -7,8 +7,8 @@
 <% request.getAttribute("topicsLayer3List"); %>
 <% request.getAttribute("topicsLayer4List"); %>
 <% request.getAttribute("topicLayer3"); %>
-<c:set var="login" scope="session" value="${login}"/>
 <% request.getAttribute("userType"); %>
+<c:set var="login" scope="session" value="${login}"/>
 
 
 <!DOCTYPE html>
@@ -54,65 +54,11 @@
   <!-- Lewe menu -->
 
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <div class="card card-primary card-outline">
-      <div class="card-header">
-        <h3 class="card-title">
-          <!--<i class="fas fa-edit"></i> -->
-          ${topicLayer3.getName()}
-        </h3>
-      </div>
-      <div class="card-body">
+  <!-- Content Wrapper. Contains page content
 
-        <div class="row">
-          <div class="col-5 col-sm-3">
+   tutaj wklej tresc strony
+   -->
 
-            <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-              <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount">
-                <c:if test="${topicLayer3.getIdLayer3() == topicLayer4Loop.getFkIdLayer3()}">
-                  <c:if test="${theCount.count == 1}">
-                    <a class="nav-link active" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
-                       href="#vert-tabs-home-${theCount.count}"
-                       role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="true">${theCount.count}. ${topicLayer4Loop.getName()}</a>
-                  </c:if>
-                  <c:if test="${theCount.count != 1}">
-                    <a class="nav-link" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
-                       href="#vert-tabs-home-${theCount.count}"
-                       role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="false">${theCount.count}. ${topicLayer4Loop.getName()}</a>
-                  </c:if>
-                </c:if>
-
-              </c:forEach>
-            </div>
-          </div>
-          <div class="col-7 col-sm-9">
-            <div class="tab-content" id="vert-tabs-tabContent">
-              <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount2">
-                <c:if test="${topicLayer3.getIdLayer3() == topicLayer4Loop.getFkIdLayer3()}">
-                  <c:if test="${theCount2.count == 1}">
-                    <div class="tab-pane text-left fade show active" id="vert-tabs-home-${theCount2.count}"
-                         role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4Loop.getContent()}
-                    </div>
-                  </c:if>
-                  <c:if test="${theCount2.count != 1}">
-                    <div class="tab-pane fade" id="vert-tabs-home-${theCount2.count}" role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4Loop.getContent()}
-                    </div>
-                  </c:if>
-                </c:if>
-              </c:forEach>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- /.card -->
-    </div>
-  </div>
   <!-- /.card-body -->
   <div class="card-footer">
     Footer

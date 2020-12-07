@@ -7,8 +7,8 @@
 <% request.getAttribute("topicsLayer3List"); %>
 <% request.getAttribute("topicsLayer4List"); %>
 <% request.getAttribute("topicLayer3"); %>
-<c:set var="login" scope="session" value="${login}"/>
 <% request.getAttribute("userType"); %>
+<c:set var="login" scope="session" value="${login}"/>
 
 
 <!DOCTYPE html>
@@ -54,57 +54,94 @@
   <!-- Lewe menu -->
 
 
-  <!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper. Contains page content
+
+   tutaj wklej tresc strony
+   -->
   <div class="content-wrapper">
     <div class="card card-primary card-outline">
       <div class="card-header">
         <h3 class="card-title">
           <!--<i class="fas fa-edit"></i> -->
-          ${topicLayer3.getName()}
+          Panel Administracyjny
         </h3>
       </div>
       <div class="card-body">
 
         <div class="row">
           <div class="col-5 col-sm-3">
-
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-              <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount">
-                <c:if test="${topicLayer3.getIdLayer3() == topicLayer4Loop.getFkIdLayer3()}">
-                  <c:if test="${theCount.count == 1}">
-                    <a class="nav-link active" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
-                       href="#vert-tabs-home-${theCount.count}"
-                       role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="true">${theCount.count}. ${topicLayer4Loop.getName()}</a>
-                  </c:if>
-                  <c:if test="${theCount.count != 1}">
-                    <a class="nav-link" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
-                       href="#vert-tabs-home-${theCount.count}"
-                       role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="false">${theCount.count}. ${topicLayer4Loop.getName()}</a>
-                  </c:if>
-                </c:if>
+              <a class="nav-link active" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab"
+                 aria-controls="vert-tabs-home" aria-selected="true">Edytuj wpis</a>
+              <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab"
+                 aria-controls="vert-tabs-profile" aria-selected="false">Dodaj nową zakładkę</a>
+              <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab"
+                 aria-controls="vert-tabs-messages" aria-selected="false">Edutuj menu</a>
 
-              </c:forEach>
             </div>
           </div>
           <div class="col-7 col-sm-9">
             <div class="tab-content" id="vert-tabs-tabContent">
-              <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount2">
-                <c:if test="${topicLayer3.getIdLayer3() == topicLayer4Loop.getFkIdLayer3()}">
-                  <c:if test="${theCount2.count == 1}">
-                    <div class="tab-pane text-left fade show active" id="vert-tabs-home-${theCount2.count}"
-                         role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4Loop.getContent()}
+              <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel"
+                   aria-labelledby="vert-tabs-home-tab">
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <!-- select -->
+                    <div class="form-group">
+                      <label>Warstwa 1</label>
+                      <select class="form-control">
+                        <c:forEach items="${topicsLayer1List}" var="topicLayer1Loop" varStatus="theCount">
+                          <option>${topicLayer1Loop.getName()}</option>
+                        </c:forEach>
+                      </select>
                     </div>
-                  </c:if>
-                  <c:if test="${theCount2.count != 1}">
-                    <div class="tab-pane fade" id="vert-tabs-home-${theCount2.count}" role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4Loop.getContent()}
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- select -->
+                    <div class="form-group">
+                      <label>Warstwa 2</label>
+                      <select class="form-control">
+                        <c:forEach items="${topicsLayer2List}" var="topicLayer2Loop" varStatus="theCount">
+                          <option>${topicLayer2Loop.getName()}</option>
+                        </c:forEach>
+                      </select>
                     </div>
-                  </c:if>
-                </c:if>
-              </c:forEach>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- select -->
+                    <div class="form-group">
+                      <label>Warstwa 3</label>
+                      <select class="form-control">
+                        <c:forEach items="${topicsLayer3List}" var="topicLayer3Loop" varStatus="theCount">
+                          <option>${topicLayer3Loop.getName()}</option>
+                        </c:forEach>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- select -->
+                    <div class="form-group">
+                      <label>Warstwa 4</label>
+                      <select class="form-control">
+                        <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount">
+                          <option>${topicLayer4Loop.getName()}</option>
+                        </c:forEach>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <%@include file="09_01_editors_form.jsp" %>
+              </div>
+              <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
+                Dodaj nową zakładkę
+              </div>
+              <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel"
+                   aria-labelledby="vert-tabs-messages-tab">
+                Edytuj menu
+              </div>
+
             </div>
           </div>
         </div>

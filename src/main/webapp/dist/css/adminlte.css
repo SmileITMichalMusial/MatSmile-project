@@ -4809,6 +4809,7 @@ input[type="button"].btn-block {
 
 .card-title {
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .card-subtitle {
@@ -17977,7 +17978,7 @@ html.maximized-card {
 
 .card-title {
   float: left;
-  font-size: 1.1rem;
+  font-size: 5.1rem;
   font-weight: 400;
   margin: 0;
 }

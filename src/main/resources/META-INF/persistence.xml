@@ -12,6 +12,7 @@
         <class>pl.matemania.domain.topics.TopicLayer2</class>
         <class>pl.matemania.domain.topics.TopicLayer3</class>
         <class>pl.matemania.domain.topics.TopicLayer4</class>
+        <class>pl.matemania.domain.User</class>
 
 
         <properties>
