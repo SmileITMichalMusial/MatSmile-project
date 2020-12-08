@@ -42,7 +42,7 @@
 
     <c:if test="${empty login}">
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="01_L_login_page.jsp" class="nav-link"><i class="fas fa-sign-in-alt"></i>&nbspZałóż konto</a>
+        <a href="01_L_add_user_page.jsp" class="nav-link"><i class="fas fa-sign-in-alt"></i>&nbspZałóż konto</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="01_L_login_page.jsp" class="nav-link"><i class="fas fa-sign-in-alt"></i>&nbspZaloguj</a>

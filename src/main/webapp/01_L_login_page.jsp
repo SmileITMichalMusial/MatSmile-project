@@ -85,7 +85,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="#" class="text-center">Załóż konto</a>
+        <a href="01_L_add_user_page.jsp" class="text-center">Załóż konto</a>
       </p>
       <p class="mb-1">
         <a href="StartPage" class="text-center">Powrót do strony głównej</a>
