@@ -130,10 +130,12 @@
                       </select>
                     </div>
                   </div>
+                  <%@include file="09_01_editors_form.jsp" %>
                 </div>
 
-                <%@include file="09_01_editors_form.jsp" %>
+
               </div>
+
               <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
                 Dodaj nową zakładkę
               </div>
