@@ -48,16 +48,16 @@
   <div class="col-md-11">
     <div class="content-wrapper login-box">
       <div class="login-logo">
-        <a href="index.jsp"><b>Matemania</b></a>
+        <a href="index.jsp"><b>&nbsp;</b></a>
       </div>
-      <!-- /.login-logo -->
+      <!--/.login-logo -->
       <div class="card">
         <div class="card-body register-card-body">
           <p class="login-box-msg">Załóż konto</p>
 
-          <form action="../../index.html" method="post">
+          <form action="UserAddServletUser" method="post">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Imię i Nazwisko">
+              <input type="text" class="form-control" name="name" placeholder="Imię (wymagane)" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -65,15 +65,23 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Adres email">
+              <input type="text" class="form-control" name="surname" placeholder="Nazwisko (opcjonalnie)">
               <div class="input-group-append">
                 <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
+                  <span class="fas fa-user"></span>
                 </div>
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Hasło">
+              <input type="text" class="form-control" name="login" placeholder="Login lub email (wymagane)" required>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" name="password" placeholder="Hasło (wymagane)" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -81,7 +89,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Powtórz hasło">
+              <input type="password" class="form-control" placeholder="Powtórz hasło (wymagane)" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -89,6 +97,8 @@
               </div>
             </div>
             <div class="row">
+              <!--
+              Akceptacja regulaminu -- poprawic <div class="col-12"> na col-4 gdy dodamy regulamin przy zarejestruj
               <div class="col-8">
                 <div class="icheck-primary">
                   <input type="checkbox" id="agreeTerms" name="terms" value="agree">
@@ -96,15 +106,17 @@
                     Zgadzam się z <a href="#">regulaminem</a>
                   </label>
                 </div>
-              </div>
+              </div> -->
               <!-- /.col -->
-              <div class="col-4">
+              <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block">Zarejestruj</button>
               </div>
               <!-- /.col -->
             </div>
           </form>
 
+         <!--
+          Login via social media
           <div class="social-auth-links text-center">
             <p>- ALBO -</p>
             <a href="#" class="btn btn-block btn-primary">
@@ -115,7 +127,7 @@
               <i class="fab fa-google-plus mr-2"></i>
               Zaloguj się za pomocą Google
             </a>
-          </div>
+          </div> -->
 
           <a href="01_L_login_page.jsp" class="text-center">Mam już konto</a>
         </div>
@@ -123,10 +135,8 @@
       </div><!-- /.card -->
     </div></div>
 </div>
-</div>
-<!-- /.login-box -->
 
-<!-- jQuery -->
+
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

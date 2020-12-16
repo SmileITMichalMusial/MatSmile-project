@@ -1,5 +1,7 @@
-package pl.matemania.servlets;
+package pl.matemania.servlets.loginServlets;
 
+
+import pl.matemania.servlets.loginServlets.LoginServlet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

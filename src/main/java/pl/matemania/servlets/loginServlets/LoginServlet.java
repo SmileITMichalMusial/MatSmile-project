@@ -1,4 +1,4 @@
-package pl.matemania.servlets;
+package pl.matemania.servlets.loginServlets;
 
 
 import pl.matemania.dao.UsersDao;
@@ -62,7 +62,7 @@ class LoginServlet extends HttpServlet {
                 logger.warning("Zalogowany admin");
                 logger.info("Sample info message");
                 logger.info("Użytkownik: " + login + " zalogowany z sukcesem");
-                redirect = "09_admin_main_page.jsp";
+                redirect = "index.jsp";
                 RequestDispatcher rd = req.getRequestDispatcher(redirect);
                 rd.forward(req, resp);
                 return;
