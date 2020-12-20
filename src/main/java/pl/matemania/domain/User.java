@@ -18,16 +18,16 @@ public class User {
     @Column(name = "login", nullable = false)
     private String login;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "surname", nullable = false)
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "phoneNumber")
@@ -36,7 +36,7 @@ public class User {
     @Column(name = "UserType")
     private String userType;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active")
     private Boolean isActive;
 
     @Column(name = "date_created", nullable = false)

@@ -10,6 +10,8 @@ public interface UsersDao {
 
     List<User> getUsersListFromDB();
 
+    List<User> getUsersListFromDBSortedReversedActiveThenTypeThenId();
+
     User read(int id);
 
     void modifyUserDb(User user);

@@ -56,7 +56,7 @@
 
       <c:if test="${userType == 'admin'}">
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="09_admin_main_page.jsp" class="nav-link">Administracja</a>
+        <a href="AdminMainPageServlet" class="nav-link">Administracja</a>
       </li>
       </c:if>
       <li>

@@ -8,7 +8,6 @@
 <% request.getAttribute("topicsLayer4List"); %>
 <% request.getAttribute("topicLayer3"); %>
 <% request.getAttribute("userType"); %>
-<% request.getAttribute("user_modification_action"); %>
 <c:set var="login" scope="session" value="${login}"/>
 
 
@@ -74,11 +73,10 @@
           <!-- Menu Madministratora po lewej -->
           <div class="col-5 col-sm-3">
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile"
-                 role="tab"
-                 aria-controls="vert-tabs-profile" aria-selected="true">Zarządzanie użytkownikami</a>
-              <a class="nav-link" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab"
-                 aria-controls="vert-tabs-home" aria-selected="false">Edytuj wpis</a>
+              <a class="nav-link active" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab"
+                 aria-controls="vert-tabs-home" aria-selected="true">Edytuj wpis</a>
+              <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab"
+                 aria-controls="vert-tabs-profile" aria-selected="false">Zarządzanie użytkownikami</a>
               <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab"
                  aria-controls="vert-tabs-messages" aria-selected="false">Edutuj menu</a>
             </div>
@@ -87,21 +85,7 @@
           <!-- Zawartość strony menu administratora -->
           <div class="col-7 col-sm-9">
             <div class="tab-content" id="vert-tabs-tabContent">
-              <div class="tab-pane text-left fade show active" id="vert-tabs-profile" role="tabpanel"
-                   aria-labelledby="vert-tabs-profile-tab">
-
-
-                <c:if test="${user_modification_action == 'modify_user'}">
-                  <%@include file="04_01_user_modify_admin.jsp" %>
-                </c:if>
-
-                <c:if
-                  test="${user_modification_action == '' or user_modification_action == null or user_modification_action.equals('') or user_modification_action.equals(null)}">
-                  <%@include file="04_user_view_admin.jsp" %>
-                </c:if>
-
-              </div>
-              <div class="tab-pane fade" id="vert-tabs-home" role="tabpanel"
+              <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel"
                    aria-labelledby="vert-tabs-home-tab">
 
                 <div class="row">
@@ -152,6 +136,54 @@
                   <%@include file="09_01_editors_form.jsp" %>
                 </div>
 
+
+              </div>
+              <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
+
+                <!-- Edycja użytkownika -->
+
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Edycja użytkownika ${user.getLogin()}</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form role="form" method="post" action="UserEditServlet">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                               value="${user.getEmail()}" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                          </div>
+                          <div class="input-group-append">
+                            <span class="input-group-text" id="">Upload</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="09_admin_main_page">Anuluj</button>
+                    </div>
+                  </form>
+                </div>
 
               </div>
               <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel"
