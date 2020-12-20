@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateless
 public class UsersDaoBean implements UsersDao {
@@ -22,6 +24,23 @@ public class UsersDaoBean implements UsersDao {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         List<User> userList = entityManager.createQuery("FROM User ").getResultList();
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getUsersListFromDBSortedReversedActiveThenTypeThenId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<User> userList = entityManager.createQuery("FROM User ").getResultList();
+
+        userList = userList
+                .stream()
+                .sorted(Comparator.comparing(User::getActive).reversed()
+                        .thenComparing(User::getUserType)
+                        .thenComparing(User::getId))
+                .collect(Collectors.toList());
 
         return userList;
     }

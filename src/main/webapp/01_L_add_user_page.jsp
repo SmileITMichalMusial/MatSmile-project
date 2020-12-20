@@ -57,7 +57,16 @@
 
           <form action="UserAddServletUser" method="post">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Imię (wymagane)" required>
+              <input type="text" class="form-control" name="login" placeholder="Login (wymagane)" required>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="name" placeholder="Imię">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -65,7 +74,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" name="surname" placeholder="Nazwisko (opcjonalnie)">
+              <input type="text" class="form-control" name="surname" placeholder="Nazwisko">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -73,7 +82,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" name="login" placeholder="Login lub email (wymagane)" required>
+              <input type="text" class="form-control" name="email" placeholder="Email">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -82,14 +91,6 @@
             </div>
             <div class="input-group mb-3">
               <input type="password" class="form-control" name="password" placeholder="Hasło (wymagane)" required>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Powtórz hasło (wymagane)" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
