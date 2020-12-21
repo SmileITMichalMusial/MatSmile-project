@@ -42,6 +42,7 @@
 <%@include file="001_header.jsp" %>
 
 <%@include file="002_left_menu.jsp" %>
+
 <div class="row">
   <div class="col-md-1">
   </div>
@@ -52,89 +53,96 @@
       </div>
       <!--/.login-logo -->
       <div class="card">
-        <div class="card-body register-card-body">
-          <p class="login-box-msg">Załóż konto</p>
 
-          <form action="UserAddServletUser" method="post">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" name="login" placeholder="Login (wymagane)" required>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
-              </div>
-            </div>
+        <p class="login-box-msg"><br>Załóż konto w portalu MateMania</br>
 
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Imię">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
+        <form action="UserAddServletUser" method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="login" placeholder="Login (wymagane)" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
               </div>
             </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" name="surname" placeholder="Nazwisko">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" name="email" placeholder="Email">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
-              </div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" name="password" placeholder="Hasło (wymagane)" required>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <!--
-              Akceptacja regulaminu -- poprawic <div class="col-12"> na col-4 gdy dodamy regulamin przy zarejestruj
-              <div class="col-8">
-                <div class="icheck-primary">
-                  <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                  <label for="agreeTerms">
-                    Zgadzam się z <a href="#">regulaminem</a>
-                  </label>
-                </div>
-              </div> -->
-              <!-- /.col -->
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block">Zarejestruj</button>
-              </div>
-              <!-- /.col -->
-            </div>
-          </form>
+          </div>
 
-         <!--
-          Login via social media
-          <div class="social-auth-links text-center">
-            <p>- ALBO -</p>
-            <a href="#" class="btn btn-block btn-primary">
-              <i class="fab fa-facebook mr-2"></i>
-              Zaloguj się za pomoc Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-              <i class="fab fa-google-plus mr-2"></i>
-              Zaloguj się za pomocą Google
-            </a>
-          </div> -->
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="name" placeholder="Imię">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="surname" placeholder="Nazwisko">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="email" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Hasło (wymagane)" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!--
+            Akceptacja regulaminu -- poprawic <div class="col-12"> na col-4 gdy dodamy regulamin przy zarejestruj
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                <label for="agreeTerms">
+                  Zgadzam się z <a href="#">regulaminem</a>
+                </label>
+              </div>
+            </div> -->
+            <!-- /.col -->
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block">Zarejestruj</button>
 
-          <a href="01_L_login_page.jsp" class="text-center">Mam już konto</a>
-        </div>
-        <!-- /.form-box -->
-      </div><!-- /.card -->
-    </div></div>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <!--
+         Login via social media
+         <div class="social-auth-links text-center">
+           <p>- ALBO -</p>
+           <a href="#" class="btn btn-block btn-primary">
+             <i class="fab fa-facebook mr-2"></i>
+             Zaloguj się za pomoc Facebook
+           </a>
+           <a href="#" class="btn btn-block btn-danger">
+             <i class="fab fa-google-plus mr-2"></i>
+             Zaloguj się za pomocą Google
+           </a>
+         </div> -->
+
+        <a href="01_L_login_page.jsp" class="text-left">
+          Mam już konto
+        </a>
+        <a href="StartPage" class="text-left">
+          Strona Główna
+        </a>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+</div>
 </div>
 
 
