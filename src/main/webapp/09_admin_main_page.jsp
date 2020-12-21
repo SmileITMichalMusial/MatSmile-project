@@ -77,10 +77,10 @@
               <a class="nav-link active" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile"
                  role="tab"
                  aria-controls="vert-tabs-profile" aria-selected="true">Zarządzanie użytkownikami</a>
+              <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab"
+                 aria-controls="vert-tabs-messages" aria-selected="false">Edycja menu strony</a>
               <a class="nav-link" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab"
                  aria-controls="vert-tabs-home" aria-selected="false">Edytuj wpis</a>
-              <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab"
-                 aria-controls="vert-tabs-messages" aria-selected="false">Edutuj menu</a>
             </div>
           </div>
 
@@ -100,6 +100,11 @@
                   <%@include file="04_user_view_admin.jsp" %>
                 </c:if>
 
+              </div>
+              <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel"
+                   aria-labelledby="vert-tabs-messages-tab">
+
+                <%@include file="05_page_menu_edit_1.jsp" %>
               </div>
               <div class="tab-pane fade" id="vert-tabs-home" role="tabpanel"
                    aria-labelledby="vert-tabs-home-tab">
@@ -153,10 +158,6 @@
                 </div>
 
 
-              </div>
-              <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel"
-                   aria-labelledby="vert-tabs-messages-tab">
-                Edytuj menu
               </div>
             </div>
           </div>
