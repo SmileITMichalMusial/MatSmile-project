@@ -1,5 +1,7 @@
 package pl.matemania.dao;
 
+import pl.matemania.Utils.Dates;
+import pl.matemania.domain.User;
 import pl.matemania.domain.topics.TopicLayer1;
 import pl.matemania.domain.topics.TopicLayer2;
 import pl.matemania.domain.topics.TopicLayer3;
@@ -16,35 +18,74 @@ public class TopicsDaoBean implements TopicsDao {
 
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
 
-
     @Override
-    public TopicLayer1 getSingleTopicLayer1(int id1) {
+    public TopicLayer1 getSingleTopicLayer1(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TopicLayer1 topicLayer1 = entityManager.find(TopicLayer1.class, id1);
+        TopicLayer1 topicLayer1 = entityManager.find(TopicLayer1.class, id);
         return topicLayer1;
     }
 
 
     @Override
-    public TopicLayer2 getSingleTopicLayer2(int id1) {
+    public TopicLayer2 getSingleTopicLayer2(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TopicLayer2 topicLayer2 = entityManager.find(TopicLayer2.class, id1);
+        TopicLayer2 topicLayer2 = entityManager.find(TopicLayer2.class, id);
         return topicLayer2;
     }
 
     @Override
-    public TopicLayer3 getSingleTopicLayer3(int id1) {
+    public TopicLayer3 getSingleTopicLayer3(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TopicLayer3 topicLayer3 = entityManager.find(TopicLayer3.class, id1);
+        TopicLayer3 topicLayer3 = entityManager.find(TopicLayer3.class, id);
         return topicLayer3;
     }
 
     @Override
-    public TopicLayer4 getSingleTopicLayer4(int id1) {
+    public TopicLayer4 getSingleTopicLayer4(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TopicLayer4 topicLayer4 = entityManager.find(TopicLayer4.class, id1);
+        TopicLayer4 topicLayer4 = entityManager.find(TopicLayer4.class, id);
         return topicLayer4;
     }
+
+
+    @Override
+    public void markTopicLayer1AsInactiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer1 topicLayer1 = getSingleTopicLayer1(id);
+        System.out.println("TopicLayer1 id: " + id);
+        System.out.println("TopicLayer1 status: " + topicLayer1.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer1.setActive(false);
+        topicLayer1.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer1 status: " + topicLayer1.getActive());
+        entityManager.merge(topicLayer1);
+        entityTransaction.commit();
+        entityManager.close();
+
+
+    }
+
+    @Override
+    public void markTopicLayer2AsActiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer1 topicLayer1 = getSingleTopicLayer1(id);
+        System.out.println("TopicLayer1 id: " + id);
+        System.out.println("TopicLayer1 status: " + topicLayer1.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer1.setActive(true);
+        topicLayer1.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer1 status: " + topicLayer1.getActive());
+        entityManager.merge(topicLayer1);
+        entityTransaction.commit();
+        entityManager.close();
+
+
+    }
+
 
 
     @Override
@@ -101,6 +142,16 @@ public class TopicsDaoBean implements TopicsDao {
                 .collect(Collectors.toList());
 
         return topicLayer4List;
+    }
+
+    @Override
+    public void modifyTopicLayer1Db(TopicLayer1 topicLayer1) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        entityManager.merge(topicLayer1);
+        entityTransaction.commit();
+        entityManager.close();
     }
 
 }
