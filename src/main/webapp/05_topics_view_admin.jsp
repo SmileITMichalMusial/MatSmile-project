@@ -8,7 +8,7 @@
 <% request.getSession().getAttribute("topicsLayer4List"); %>
 
 
-<head>g
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 3 | DataTables</title>
@@ -47,40 +47,26 @@
             <tr>
               <th>Edycja</th>
               <th>id_1</th>
-              <th>order_id_1</th>
               <th>id_2</th>
-              <th>order_id_2</th>
               <th>id_3</th>
-              <th>order_id_3</th>
               <th>id_4</th>
-              <th>order_id_4</th>
               <th>Warstwa 1</th>
               <th>Warstwa 2</th>
               <th>Warstwa 3</th>
               <th>Warstwa 4</th>
               <th>Aktywny?</th>
               <th><em class="fa fa-cog"></em></th>
+              <th>Dodaj nowy</th>
             </tr>
             </thead>
 
             <tbody>
 
             <c:forEach items="${topicsLayer1List}" var="topicsLayer1ListLoop">
-
               <tr>
                 <td>
                   <a href="TopicsEditServlet?id=${topicsLayer1ListLoop.getIdLayer1()}&layer_id=1"><em
                     class="fa fa-pencil-alt"></em></a>
-                </td>
-                <td>
-                  <c:if test="${!topicsLayer1ListLoop.getActive()}">
-                    <p class="text-muted">
-                        ${topicsLayer1ListLoop.getIdLayer1()}
-                    </p>
-                  </c:if>
-                  <c:if test="${topicsLayer1ListLoop.getActive()}">
-                    ${topicsLayer1ListLoop.getIdLayer1()}
-                  </c:if>
                 </td>
                 <td>
                   <c:if test="${!topicsLayer1ListLoop.getActive()}">
@@ -92,25 +78,10 @@
                     ${topicsLayer1ListLoop.getOrderId()}
                   </c:if>
                 </td>
-                <td>
-                  ID_2
-                </td>
-                <td>
-                  order_id_2
-                </td>
-                <td>
-                  ID_3
-                </td>
-                <td>
-                  order_id_3
-                </td>
-                <td>
-                  ID_4
-                </td>
-                <td>
-                  order_id_4
-                </td>
-                <td>
+                <td style="width:1px;white-space:nowrap"></td>
+                <td style="width:1px;white-space:nowrap"></td>
+                <td style="width:1px;white-space:nowrap"></td>
+                <td colspan="4">
                   <c:if test="${!topicsLayer1ListLoop.getActive()}">
                     <p class="text-muted">
                         ${topicsLayer1ListLoop.getName()}
@@ -120,9 +91,6 @@
                     ${topicsLayer1ListLoop.getName()}
                   </c:if>
                 </td>
-                <td>Warstwa 2 name</td>
-                <td>Warstwa 3 name</td>
-                <td>Warstwa 4 name</td>
                 <td>
                   <c:if test="${!topicsLayer1ListLoop.getActive()}">
                     <p class="text-muted">
@@ -148,27 +116,212 @@
 
 
                 </td>
+                <td>Dodaj wpis 1</td>
               </tr>
+
+              <c:forEach items="${topicsLayer2List}" var="topicsLayer2ListLoop">
+                <c:if test="${topicsLayer1ListLoop.getIdLayer1() == topicsLayer2ListLoop.getFkIdLayer1()}">
+                  <tr>
+                    <td>
+                      <a href="TopicsEditServlet?id=${topicsLayer2ListLoop.getIdLayer2()}&layer_id=2"><em
+                        class="fa fa-pencil-alt"></em></a>
+                    </td>
+                    <td style="width:1px;white-space:nowrap"></td>
+                    <td>
+                      <c:if test="${!topicsLayer2ListLoop.getActive()}">
+                        <p class="text-muted">
+                            ${topicsLayer2ListLoop.getOrderId()}
+                        </p>
+                      </c:if>
+                      <c:if test="${topicsLayer2ListLoop.getActive()}">
+                        ${topicsLayer2ListLoop.getOrderId()}
+                      </c:if>
+                    </td>
+                    <td style="width:1px;white-space:nowrap"></td>
+                    <td style="width:1px;white-space:nowrap"></td>
+                    <td style="width:1px;white-space:nowrap"></td>
+                    <td colspan="3">
+                      <c:if test="${!topicsLayer2ListLoop.getActive()}">
+                        <p class="text-muted">
+                            ${topicsLayer2ListLoop.getName()}
+                        </p>
+                      </c:if>
+                      <c:if test="${topicsLayer2ListLoop.getActive()}">
+                        ${topicsLayer2ListLoop.getName()}
+                      </c:if>
+                    </td>
+                    <td>
+                      <c:if test="${!topicsLayer2ListLoop.getActive()}">
+                        <p class="text-muted">
+                            ${topicsLayer2ListLoop.getActive()}
+                        </p>
+                      </c:if>
+                      <c:if test="${topicsLayer2ListLoop.getActive()}">
+                        ${topicsLayer2ListLoop.getActive()}
+                      </c:if>
+
+                    </td>
+                    <td>
+                      <c:set var="active" scope="session"
+                             value="${topicsLayer2ListLoop.getActive()}"/>
+                      <c:if test="${active}">
+                        <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
+                          class="fa fa-trash"></em></a>
+                      </c:if>
+                      <c:if test="${!active}">
+                        <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
+                          class="fa fa-plus"></em></a>
+                      </c:if>
+
+
+                    </td>
+                    <td>Dodaj wpis 2</td>
+                  </tr>
+                </c:if>
+
+                <c:forEach items="${topicsLayer3List}" var="topicsLayer3ListLoop">
+                  <c:if
+                    test="${topicsLayer1ListLoop.getIdLayer1() == topicsLayer2ListLoop.getFkIdLayer1() && topicsLayer2ListLoop.getIdLayer2() == topicsLayer3ListLoop.getFkIdLayer2()}">
+                    <tr>
+                      <td>
+                        <a href="TopicsEditServlet?id=${topicsLayer3ListLoop.getIdLayer3()}&layer_id=3"><em
+                          class="fa fa-pencil-alt"></em></a>
+                      </td>
+                      <td style="width:1px;white-space:nowrap"></td>
+                      <td style="width:1px;white-space:nowrap"></td>
+                      <td>
+                        <c:if test="${!topicsLayer3ListLoop.getActive()}">
+                          <p class="text-muted">
+                              ${topicsLayer3ListLoop.getOrderId()}
+                          </p>
+                        </c:if>
+                        <c:if test="${topicsLayer3ListLoop.getActive()}">
+                          ${topicsLayer3ListLoop.getOrderId()}
+                        </c:if>
+                      </td>
+                      <td style="width:1px;white-space:nowrap"></td>
+                      <td colspan="2" style="width:1px;white-space:nowrap"></td>
+                      <td colspan="2">
+                        <c:if test="${!topicsLayer3ListLoop.getActive()}">
+                          <p class="text-muted">
+                              ${topicsLayer3ListLoop.getName()}
+                          </p>
+                        </c:if>
+                        <c:if test="${topicsLayer3ListLoop.getActive()}">
+                          ${topicsLayer3ListLoop.getName()}
+                        </c:if>
+                      </td>
+                      <td>
+                        <c:if test="${!topicsLayer3ListLoop.getActive()}">
+                          <p class="text-muted">
+                              ${topicsLayer3ListLoop.getActive()}
+                          </p>
+                        </c:if>
+                        <c:if test="${topicsLayer3ListLoop.getActive()}">
+                          ${topicsLayer3ListLoop.getActive()}
+                        </c:if>
+
+                      </td>
+                      <td>
+                        <c:set var="active" scope="session"
+                               value="${topicsLayer3ListLoop.getActive()}"/>
+                        <c:if test="${active}">
+                          <a href="TopicLayer1DeleteServlet?id=${topicsLayer3ListLoop.getIdLayer3()}"><em
+                            class="fa fa-trash"></em></a>
+                        </c:if>
+                        <c:if test="${!active}">
+                          <a href="TopicLayer1DeleteServlet?id=${topicsLayer3ListLoop.getIdLayer3()}"><em
+                            class="fa fa-plus"></em></a>
+                        </c:if>
+
+
+                      </td>
+                      <td>Dodaj wpis 3</td>
+                    </tr>
+                  </c:if>
+
+                  <c:forEach items="${topicsLayer4List}" var="topicsLayer4ListLoop">
+                    <c:if
+                      test="${topicsLayer1ListLoop.getIdLayer1() == topicsLayer2ListLoop.getFkIdLayer1() && topicsLayer2ListLoop.getIdLayer2() == topicsLayer3ListLoop.getFkIdLayer2() && topicsLayer3ListLoop.getIdLayer3() == topicsLayer4ListLoop.getFkIdLayer3()}">
+                      <tr>
+                        <td>
+                          <a href="TopicsEditServlet?id=${topicsLayer4ListLoop.getIdLayer4()}&layer_id=4"><em
+                            class="fa fa-pencil-alt"></em></a>
+                        </td>
+                        <td style="width:1px;white-space:nowrap"></td>
+                        <td style="width:1px;white-space:nowrap"></td>
+                        <td style="width:1px;white-space:nowrap"></td>
+                        <td>
+                          <c:if test="${!topicsLayer4ListLoop.getActive()}">
+                            <p class="text-muted">
+                                ${topicsLayer4ListLoop.getOrderId()}
+                            </p>
+                          </c:if>
+                          <c:if test="${topicsLayer4ListLoop.getActive()}">
+                            ${topicsLayer4ListLoop.getOrderId()}
+                          </c:if>
+                        </td>
+                        <td colspan="3" style="width:1px;white-space:nowrap"></td>
+                        <td>
+                          <c:if test="${!topicsLayer4ListLoop.getActive()}">
+                            <p class="text-muted">
+                                ${topicsLayer4ListLoop.getName()}
+                            </p>
+                          </c:if>
+                          <c:if test="${topicsLayer4ListLoop.getActive()}">
+                            ${topicsLayer4ListLoop.getName()}
+                          </c:if>
+                        </td>
+                        <td>
+                          <c:if test="${!topicsLayer4ListLoop.getActive()}">
+                            <p class="text-muted">
+                                ${topicsLayer4ListLoop.getActive()}
+                            </p>
+                          </c:if>
+                          <c:if test="${topicsLayer4ListLoop.getActive()}">
+                            ${topicsLayer4ListLoop.getActive()}
+                          </c:if>
+
+                        </td>
+                        <td>
+                          <c:set var="active" scope="session"
+                                 value="${topicsLayer4ListLoop.getActive()}"/>
+                          <c:if test="${active}">
+                            <a href="TopicLayer1DeleteServlet?id=${topicsLayer4ListLoop.getIdLayer4()}"><em
+                              class="fa fa-trash"></em></a>
+                          </c:if>
+                          <c:if test="${!active}">
+                            <a href="TopicLayer1DeleteServlet?id=${topicsLayer4ListLoop.getIdLayer4()}"><em
+                              class="fa fa-plus"></em></a>
+                          </c:if>
+
+
+                        </td>
+                        <td>Dodaj wpis 4</td>
+                      </tr>
+                    </c:if>
+
+                  </c:forEach>
+                </c:forEach>
+              </c:forEach>
             </c:forEach>
             </tbody>
+
 
             <tfoot>
             <tr>
               <th>Edycja</th>
               <th>id_1</th>
-              <th>order_id_1</th>
               <th>id_2</th>
-              <th>order_id_2</th>
               <th>id_3</th>
-              <th>order_id_3</th>
               <th>id_4</th>
-              <th>order_id_4</th>
               <th>Warstwa 1</th>
               <th>Warstwa 2</th>
               <th>Warstwa 3</th>
               <th>Warstwa 4</th>
               <th>Aktywny?</th>
               <th><em class="fa fa-cog"></em></th>
+              <th>Dodaj nowy</th>
             </tr>
             </tfoot>
 
