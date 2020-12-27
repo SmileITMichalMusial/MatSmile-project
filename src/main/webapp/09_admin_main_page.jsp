@@ -72,11 +72,11 @@
         <div class="row">
 
           <!-- Menu Madministratora po lewej -->
-          <div class="col-5 col-sm-3">
+          <div class="col-4 col-sm-3">
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab"
+              <a class="nav-link active" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab"
                  aria-controls="vert-tabs-messages" aria-selected="true">Edycja menu strony</a>
-              <a class="nav-link active" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile"
+              <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile"
                  role="tab"
                  aria-controls="vert-tabs-profile" aria-selected="false">Zarządzanie użytkownikami</a>
               <a class="nav-link" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab"
@@ -85,9 +85,9 @@
           </div>
 
           <!-- Zawartość strony menu administratora -->
-          <div class="col-7 col-sm-9">
+          <div class="col-8 col-sm-9">
             <div class="tab-content" id="vert-tabs-tabContent">
-              <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel"
+              <div class="tab-pane text-left fade show active" id="vert-tabs-messages" role="tabpanel"
                    aria-labelledby="vert-tabs-messages-tab">
 
 
@@ -100,10 +100,8 @@
                   <%@include file="05_topics_view_admin.jsp" %>
                 </c:if>
 
-
-
               </div>
-              <div class="tab-pane text-left fade show active" id="vert-tabs-profile" role="tabpanel"
+              <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel"
                    aria-labelledby="vert-tabs-profile-tab">
 
 
