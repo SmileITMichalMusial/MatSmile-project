@@ -2,9 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="login" scope="session" value="${login}"/>
 <% request.getSession().getAttribute("listOfUsers"); %>
+<% request.getSession().getAttribute("topicsLayer1List"); %>
+<% request.getSession().getAttribute("topicsLayer2List"); %>
+<% request.getSession().getAttribute("topicsLayer3List"); %>
+<% request.getSession().getAttribute("topicsLayer4List"); %>
 
 
-<head>
+<head>g
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 3 | DataTables</title>
@@ -34,123 +38,111 @@
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Manu portalu MateMania</h3>
+          <h3 class="card-title">Menu portalu MateMania</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
           <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
+              <th>Edycja</th>
               <th>id_1</th>
+              <th>order_id_1</th>
               <th>id_2</th>
+              <th>order_id_2</th>
               <th>id_3</th>
+              <th>order_id_3</th>
+              <th>id_4</th>
+              <th>order_id_4</th>
               <th>Warstwa 1</th>
               <th>Warstwa 2</th>
               <th>Warstwa 3</th>
-              <th>...</th>
-              <th>...</th>
-              <th>...</th>
+              <th>Warstwa 4</th>
+              <th>Aktywny?</th>
               <th><em class="fa fa-cog"></em></th>
             </tr>
             </thead>
 
             <tbody>
 
-            <c:forEach items="${listOfUsers}" var="userLoop">
-
+            <c:forEach items="${topicsLayer1List}" var="topicsLayer1ListLoop">
 
               <tr>
                 <td>
-                  <a href="UserEditServlet?id=${userLoop.getId()}"><em
+                  <a href="TopicsEditServlet?id=${topicsLayer1ListLoop.getIdLayer1()}&layer_id=1"><em
                     class="fa fa-pencil-alt"></em></a>
                 </td>
                 <td>
-                  <c:if test="${!userLoop.getActive()}">
+                  <c:if test="${!topicsLayer1ListLoop.getActive()}">
                     <p class="text-muted">
-                        ${userLoop.getId()}
+                        ${topicsLayer1ListLoop.getIdLayer1()}
                     </p>
                   </c:if>
-                  <c:if test="${userLoop.getActive()}">
-                    ${userLoop.getId()}
+                  <c:if test="${topicsLayer1ListLoop.getActive()}">
+                    ${topicsLayer1ListLoop.getIdLayer1()}
                   </c:if>
                 </td>
                 <td>
-                  <c:if test="${!userLoop.getActive()}">
+                  <c:if test="${!topicsLayer1ListLoop.getActive()}">
                     <p class="text-muted">
-                        ${userLoop.getLogin()}
+                        ${topicsLayer1ListLoop.getOrderId()}
                     </p>
                   </c:if>
-                  <c:if test="${userLoop.getActive()}">
-                    ${userLoop.getLogin()}
+                  <c:if test="${topicsLayer1ListLoop.getActive()}">
+                    ${topicsLayer1ListLoop.getOrderId()}
                   </c:if>
                 </td>
                 <td>
-                  <c:if test="${!userLoop.getActive()}">
-                    <p class="text-muted">
-                        ${userLoop.getName()}
-                    </p>
-                  </c:if>
-                  <c:if test="${userLoop.getActive()}">
-                    ${userLoop.getName()}
-                  </c:if>
+                  ID_2
                 </td>
                 <td>
-                  <c:if test="${!userLoop.getActive()}">
-                    <p class="text-muted">
-                        ${userLoop.getSurname()}
-                    </p>
-                  </c:if>
-                  <c:if test="${userLoop.getActive()}">
-                    ${userLoop.getSurname()}
-                  </c:if>
+                  order_id_2
                 </td>
                 <td>
-
-                  <c:if test="${!userLoop.getActive()}">
-                    <p class="text-muted">
-                      <a href="mailto:${userLoop.getEmail()}">${userLoop.getEmail()}</a>
-                    </p>
-                  </c:if>
-                  <c:if test="${userLoop.getActive()}">
-                    <a href="mailto:${userLoop.getEmail()}">${userLoop.getEmail()}</a>
-                  </c:if>
+                  ID_3
                 </td>
                 <td>
-                  <c:if test="${!userLoop.getActive()}">
-                    <p class="text-muted">
-                        ${userLoop.getPhoneNumber()}
-                    </p>
-                  </c:if>
-                  <c:if test="${userLoop.getActive()}">
-                    ${userLoop.getPhoneNumber()}
-                  </c:if>
+                  order_id_3
                 </td>
                 <td>
-                  <c:if test="${!userLoop.getActive()}">
-                    <p class="text-muted">
-                        ${userLoop.getUserType()}
-                    </p>
-                  </c:if>
-                  <c:if test="${userLoop.getActive()}">
-                    ${userLoop.getUserType()}
-                  </c:if>
-
+                  ID_4
                 </td>
                 <td>
-
-                  <c:if test="${userLoop.getActive()}">Tak</c:if>
-                  <c:if test="${!userLoop.getActive()}">Nie</c:if>
+                  order_id_4
+                </td>
+                <td>
+                  <c:if test="${!topicsLayer1ListLoop.getActive()}">
+                    <p class="text-muted">
+                        ${topicsLayer1ListLoop.getName()}
+                    </p>
+                  </c:if>
+                  <c:if test="${topicsLayer1ListLoop.getActive()}">
+                    ${topicsLayer1ListLoop.getName()}
+                  </c:if>
+                </td>
+                <td>Warstwa 2 name</td>
+                <td>Warstwa 3 name</td>
+                <td>Warstwa 4 name</td>
+                <td>
+                  <c:if test="${!topicsLayer1ListLoop.getActive()}">
+                    <p class="text-muted">
+                        ${topicsLayer1ListLoop.getActive()}
+                    </p>
+                  </c:if>
+                  <c:if test="${topicsLayer1ListLoop.getActive()}">
+                    ${topicsLayer1ListLoop.getActive()}
+                  </c:if>
 
                 </td>
                 <td>
                   <c:set var="active" scope="session"
-                         value="${userLoop.getActive()}"/>
+                         value="${topicsLayer1ListLoop.getActive()}"/>
                   <c:if test="${active}">
-                    <a href="UserDeleteServlet?id=${userLoop.getId()}"><em
+                    <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
                       class="fa fa-trash"></em></a>
                   </c:if>
                   <c:if test="${!active}">
-                    <a href="UserDeleteServlet?id=${userLoop.getId()}"><em
+                    <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
                       class="fa fa-plus"></em></a>
                   </c:if>
 
@@ -163,13 +155,18 @@
             <tfoot>
             <tr>
               <th>Edycja</th>
-              <th>ID</th>
-              <th>Login</th>
-              <th>Imię</th>
-              <th>Nazwisko</th>
-              <th>E-mail</th>
-              <th>Telefon</th>
-              <th>Typ</th>
+              <th>id_1</th>
+              <th>order_id_1</th>
+              <th>id_2</th>
+              <th>order_id_2</th>
+              <th>id_3</th>
+              <th>order_id_3</th>
+              <th>id_4</th>
+              <th>order_id_4</th>
+              <th>Warstwa 1</th>
+              <th>Warstwa 2</th>
+              <th>Warstwa 3</th>
+              <th>Warstwa 4</th>
               <th>Aktywny?</th>
               <th><em class="fa fa-cog"></em></th>
             </tr>

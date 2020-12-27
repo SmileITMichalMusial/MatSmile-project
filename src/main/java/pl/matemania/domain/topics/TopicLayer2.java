@@ -22,7 +22,7 @@ public class TopicLayer2 {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "comment", nullable = true)
+    @Column(name = "comment")
     private String comment;
 
 
@@ -32,7 +32,7 @@ public class TopicLayer2 {
     @Column(name = "date_created", nullable = false)
     private Date dateCreated;
 
-    @Column(name = "date_modified", nullable = true)
+    @Column(name = "date_modified")
     private Date dateModified;
 
     public TopicLayer2() {

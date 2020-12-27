@@ -1,8 +1,6 @@
 package pl.matemania.servlets;
 
 import pl.matemania.dao.TopicsDao;
-import pl.matemania.domain.topics.TopicLayer1;
-import pl.matemania.domain.topics.TopicLayer2;
 import pl.matemania.domain.topics.TopicLayer3;
 
 import javax.inject.Inject;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/TheoryViewServlet")
 public class TheoryViewServlet extends HttpServlet {
