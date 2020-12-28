@@ -106,11 +106,11 @@
                   <c:set var="active" scope="session"
                          value="${topicsLayer1ListLoop.getActive()}"/>
                   <c:if test="${active}">
-                    <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
+                    <a href="TopicActiveInactiveServlet?layer_number=1&id=${topicsLayer1ListLoop.getIdLayer1()}"><em
                       class="fa fa-trash"></em></a>
                   </c:if>
                   <c:if test="${!active}">
-                    <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
+                    <a href="TopicActiveInactiveServlet?layer_number=1&id=${topicsLayer1ListLoop.getIdLayer1()}"><em
                       class="fa fa-plus"></em></a>
                   </c:if>
 
@@ -165,11 +165,11 @@
                       <c:set var="active" scope="session"
                              value="${topicsLayer2ListLoop.getActive()}"/>
                       <c:if test="${active}">
-                        <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
+                        <a href="TopicActiveInactiveServlet?layer_number=2&id=${topicsLayer2ListLoop.getIdLayer2()}"><em
                           class="fa fa-trash"></em></a>
                       </c:if>
                       <c:if test="${!active}">
-                        <a href="TopicLayer1DeleteServlet?id=${topicsLayer1ListLoop.getIdLayer1()}"><em
+                        <a href="TopicActiveInactiveServlet?layer_number=2&id=${topicsLayer2ListLoop.getIdLayer2()}"><em
                           class="fa fa-plus"></em></a>
                       </c:if>
 
@@ -226,11 +226,11 @@
                         <c:set var="active" scope="session"
                                value="${topicsLayer3ListLoop.getActive()}"/>
                         <c:if test="${active}">
-                          <a href="TopicLayer1DeleteServlet?id=${topicsLayer3ListLoop.getIdLayer3()}"><em
+                          <a href="TopicActiveInactiveServlet?layer_number=3&id=${topicsLayer3ListLoop.getIdLayer3()}"><em
                             class="fa fa-trash"></em></a>
                         </c:if>
                         <c:if test="${!active}">
-                          <a href="TopicLayer1DeleteServlet?id=${topicsLayer3ListLoop.getIdLayer3()}"><em
+                          <a href="TopicActiveInactiveServlet?layer_number=3&id=${topicsLayer3ListLoop.getIdLayer3()}"><em
                             class="fa fa-plus"></em></a>
                         </c:if>
 
@@ -287,11 +287,11 @@
                           <c:set var="active" scope="session"
                                  value="${topicsLayer4ListLoop.getActive()}"/>
                           <c:if test="${active}">
-                            <a href="TopicLayer1DeleteServlet?id=${topicsLayer4ListLoop.getIdLayer4()}"><em
+                            <a href="TopicActiveInactiveServlet?layer_number=4&id=${topicsLayer4ListLoop.getIdLayer4()}"><em
                               class="fa fa-trash"></em></a>
                           </c:if>
                           <c:if test="${!active}">
-                            <a href="TopicLayer1DeleteServlet?id=${topicsLayer4ListLoop.getIdLayer4()}"><em
+                            <a href="TopicActiveInactiveServlet?layer_number=4&id=${topicsLayer4ListLoop.getIdLayer4()}"><em
                               class="fa fa-plus"></em></a>
                           </c:if>
 
