@@ -25,7 +25,6 @@ public class TopicsDaoBean implements TopicsDao {
         return topicLayer1;
     }
 
-
     @Override
     public TopicLayer2 getSingleTopicLayer2(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -47,7 +46,6 @@ public class TopicsDaoBean implements TopicsDao {
         return topicLayer4;
     }
 
-
     @Override
     public void markTopicLayer1AsInactiveInDb(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -68,7 +66,7 @@ public class TopicsDaoBean implements TopicsDao {
     }
 
     @Override
-    public void markTopicLayer2AsActiveInDb(int id) {
+    public void markTopicLayer1AsActiveInDb(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
@@ -86,7 +84,119 @@ public class TopicsDaoBean implements TopicsDao {
 
     }
 
+    @Override
+    public void markTopicLayer2AsInactiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer2 topicLayer2 = getSingleTopicLayer2(id);
+        System.out.println("TopicLayer2 id: " + id);
+        System.out.println("TopicLayer2 status: " + topicLayer2.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer2.setActive(false);
+        topicLayer2.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer1 status: " + topicLayer2.getActive());
+        entityManager.merge(topicLayer2);
+        entityTransaction.commit();
+        entityManager.close();
 
+
+    }
+
+    @Override
+    public void markTopicLayer2AsActiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer2 topicLayer2 = getSingleTopicLayer2(id);
+        System.out.println("TopicLayer2 id: " + id);
+        System.out.println("TopicLayer2 status: " + topicLayer2.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer2.setActive(true);
+        topicLayer2.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer2 status: " + topicLayer2.getActive());
+        entityManager.merge(topicLayer2);
+        entityTransaction.commit();
+        entityManager.close();
+
+
+    }
+
+    @Override
+    public void markTopicLayer3AsInactiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer3 topicLayer3 = getSingleTopicLayer3(id);
+        System.out.println("TopicLayer3 id: " + id);
+        System.out.println("TopicLayer3 status: " + topicLayer3.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer3.setActive(false);
+        topicLayer3.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer3 status: " + topicLayer3.getActive());
+        entityManager.merge(topicLayer3);
+        entityTransaction.commit();
+        entityManager.close();
+
+
+    }
+
+    @Override
+    public void markTopicLayer3AsActiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer3 topicLayer3 = getSingleTopicLayer3(id);
+        System.out.println("TopicLayer3 id: " + id);
+        System.out.println("TopicLayer3 status: " + topicLayer3.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer3.setActive(true);
+        topicLayer3.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer3 status: " + topicLayer3.getActive());
+        entityManager.merge(topicLayer3);
+        entityTransaction.commit();
+        entityManager.close();
+
+
+    }
+
+    @Override
+    public void markTopicLayer4AsInactiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer4 topicLayer4 = getSingleTopicLayer4(id);
+        System.out.println("TopicLayer4 id: " + id);
+        System.out.println("TopicLayer4 status: " + topicLayer4.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer4.setActive(false);
+        topicLayer4.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer4 status: " + topicLayer4.getActive());
+        entityManager.merge(topicLayer4);
+        entityTransaction.commit();
+        entityManager.close();
+
+
+    }
+
+    @Override
+    public void markTopicLayer4AsActiveInDb(int id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        TopicLayer4 topicLayer4 = getSingleTopicLayer4(id);
+        System.out.println("TopicLayer4 id: " + id);
+        System.out.println("TopicLayer4 status: " + topicLayer4.getActive());
+        System.out.println("Setting up as inactive...");
+        topicLayer4.setActive(true);
+        topicLayer4.setDateModified(Dates.getCurrentDateForDbModifications());
+        System.out.println("TopicLayer4 status: " + topicLayer4.getActive());
+        entityManager.merge(topicLayer4);
+        entityTransaction.commit();
+        entityManager.close();
+
+
+    }
 
     @Override
     public List<TopicLayer1> getTopicLayer1FromDbSortedByOrderId() {
@@ -142,6 +252,21 @@ public class TopicsDaoBean implements TopicsDao {
                 .collect(Collectors.toList());
 
         return topicLayer4List;
+    }
+
+    @Override
+    public List<TopicLayer1> getTopicLayer1FromDbActiveSortedByOrderId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer1> topicLayer1ListActive = entityManager.createQuery("FROM TopicLayer1 ").getResultList();
+        topicLayer1ListActive = topicLayer1ListActive
+                .stream()
+                .filter(p -> p.getActive())
+                .sorted(Comparator.comparing(TopicLayer1::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer1ListActive;
     }
 
     @Override

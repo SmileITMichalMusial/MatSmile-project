@@ -6,7 +6,6 @@
 <% request.getAttribute("topicsLayer2List"); %>
 <% request.getAttribute("topicsLayer3List"); %>
 <% request.getAttribute("topicsLayer4List"); %>
-<% request.getAttribute("topicLayer3"); %>
 <% request.getAttribute("userType"); %>
 <% request.getAttribute("user_modification_action"); %>
 <c:set var="login" scope="session" value="${login}"/>

@@ -16,12 +16,20 @@ public interface TopicsDao {
     TopicLayer4 getSingleTopicLayer4 (int id);
 
     void markTopicLayer1AsInactiveInDb(int id);
+    void markTopicLayer1AsActiveInDb(int id);
+    void markTopicLayer2AsInactiveInDb(int id);
     void markTopicLayer2AsActiveInDb(int id);
+    void markTopicLayer3AsInactiveInDb(int id);
+    void markTopicLayer3AsActiveInDb(int id);
+    void markTopicLayer4AsInactiveInDb(int id);
+    void markTopicLayer4AsActiveInDb(int id);
 
     List<TopicLayer1> getTopicLayer1FromDbSortedByOrderId();
     List<TopicLayer2> getTopicLayer2FromDbSortedByOrderId();
     List<TopicLayer3> getTopicLayer3FromDbSortedByOrderId();
     List<TopicLayer4> getTopicLayer4FromDbSortedByOrderId();
+
+    List<TopicLayer1> getTopicLayer1FromDbActiveSortedByOrderId();
 
     void modifyTopicLayer1Db(TopicLayer1 topicLayer1);
 
