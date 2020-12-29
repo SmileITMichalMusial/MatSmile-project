@@ -46,28 +46,28 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
 
-        <c:forEach items="${topicsLayer1List}" var="topicLayer1Loop">
-          <li class="nav-header">${topicLayer1Loop.getName()}
-          <c:forEach items="${topicsLayer2List}" var="topicLayer2Loop">
-            <c:if test="${topicLayer1Loop.getIdLayer1() == topicLayer2Loop.getFkIdLayer1()}">
+        <c:forEach items="${topicsLayer1ListActive}" var="topicsLayer1ListActiveLoop">
+          <li class="nav-header">${topicsLayer1ListActiveLoop.getName()}
+          <c:forEach items="${topicsLayer2ListActive}" var="topicsLayer2ListActiveLoop">
+            <c:if test="${topicsLayer1ListActiveLoop.getIdLayer1() == topicsLayer2ListActiveLoop.getFkIdLayer1()}">
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-list"></i>
                   <p>
-                      ${topicLayer2Loop.getName()}
+                      ${topicsLayer2ListActiveLoop.getName()}
                     <i class="right fas fa-angle-right"></i>
                     <span
-                      class="badge badge-info right">${topicsLayer3List.stream().filter(l -> l.getFkIdLayer2().equals(topicLayer2Loop.getIdLayer2())).count()}</span>
+                      class="badge badge-info right">${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}</span>
                   </p>
                 </a>
-                <c:forEach items="${topicsLayer3List}" var="topicLayer3Loop">
-                  <c:if test="${topicLayer2Loop.getIdLayer2() == topicLayer3Loop.getFkIdLayer2()}">
+                <c:forEach items="${topicsLayer3ListActive}" var="topicsLayer3ListActiveLoop">
+                  <c:if test="${topicsLayer2ListActiveLoop.getIdLayer2() == topicsLayer3ListActiveLoop.getFkIdLayer2()}">
                     <ul class="nav nav-treeview">
                       <li class="nav-item has-treeview">
-                        <a href="TheoryViewServlet?idLayer3=${topicLayer3Loop.getIdLayer3()}" class="nav-link">
+                        <a href="TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}" class="nav-link">
                           <i class="far fa-check-circle nav-icon"></i>
                           <p>
-                              ${topicLayer3Loop.getName()}
+                              ${topicsLayer3ListActiveLoop.getName()}
                           </p>
                         </a>
                       </li>

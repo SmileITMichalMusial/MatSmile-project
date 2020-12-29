@@ -51,7 +51,9 @@ class TopicActiveInactiveServlet extends HttpServlet {
             }
             // refresh TopicLayer1 list
             List<TopicLayer1> topicsLayer1List = topicsDao.getTopicLayer1FromDbSortedByOrderId();
+            List<TopicLayer1> topicsLayer1ListActive = topicsDao.getTopicLayer1FromDbActiveSortedByOrderId();
             req.getSession().setAttribute("topicsLayer1List", topicsLayer1List);
+            req.getSession().setAttribute("topicsLayer1ListActive",topicsLayer1ListActive);
         }
 
         if (layer_number.equals("2")) {
@@ -73,7 +75,9 @@ class TopicActiveInactiveServlet extends HttpServlet {
             }
             // refresh TopicLayer2 list
             List<TopicLayer2> topicsLayer2List = topicsDao.getTopicLayer2FromDbSortedByOrderId();
+            List<TopicLayer2> topicsLayer2ListActive = topicsDao.getTopicLayer2FromDbActiveSortedByOrderId();
             req.getSession().setAttribute("topicsLayer2List", topicsLayer2List);
+            req.getSession().setAttribute("topicsLayer2ListActive",topicsLayer2ListActive);
         }
 
         if (layer_number.equals("3")) {
@@ -95,7 +99,9 @@ class TopicActiveInactiveServlet extends HttpServlet {
             }
             // refresh TopicLayer1 list
             List<TopicLayer3> topicsLayer3List = topicsDao.getTopicLayer3FromDbSortedByOrderId();
+            List<TopicLayer3> topicsLayer3ListActive = topicsDao.getTopicLayer3FromDbActiveSortedByOrderId();
             req.getSession().setAttribute("topicsLayer3List", topicsLayer3List);
+            req.getSession().setAttribute("topicsLayer3ListActive",topicsLayer3ListActive);
         }
 
         if (layer_number.equals("4")) {
@@ -117,7 +123,9 @@ class TopicActiveInactiveServlet extends HttpServlet {
             }
             // refresh TopicLayer1 list
             List<TopicLayer4> topicsLayer4List = topicsDao.getTopicLayer4FromDbSortedByOrderId();
+            List<TopicLayer4> topicsLayer4ListActive = topicsDao.getTopicLayer4FromDbActiveSortedByOrderId();
             req.getSession().setAttribute("topicsLayer4List", topicsLayer4List);
+            req.getSession().setAttribute("topicsLayer4ListActive",topicsLayer4ListActive);
         }
 
         RequestDispatcher rd = req.getRequestDispatcher("09_admin_main_page.jsp");

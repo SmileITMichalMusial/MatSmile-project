@@ -270,6 +270,51 @@ public class TopicsDaoBean implements TopicsDao {
     }
 
     @Override
+    public List<TopicLayer2> getTopicLayer2FromDbActiveSortedByOrderId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer2> topicLayer2ListActive = entityManager.createQuery("FROM TopicLayer2 ").getResultList();
+        topicLayer2ListActive = topicLayer2ListActive
+                .stream()
+                .filter(p -> p.getActive())
+                .sorted(Comparator.comparing(TopicLayer2::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer2ListActive;
+    }
+
+    @Override
+    public List<TopicLayer3> getTopicLayer3FromDbActiveSortedByOrderId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer3> topicLayer3ListActive = entityManager.createQuery("FROM TopicLayer3 ").getResultList();
+        topicLayer3ListActive = topicLayer3ListActive
+                .stream()
+                .filter(p -> p.getActive())
+                .sorted(Comparator.comparing(TopicLayer3::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer3ListActive;
+    }
+
+    @Override
+    public List<TopicLayer4> getTopicLayer4FromDbActiveSortedByOrderId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer4> topicLayer4ListActive = entityManager.createQuery("FROM TopicLayer4 ").getResultList();
+        topicLayer4ListActive = topicLayer4ListActive
+                .stream()
+                .filter(p -> p.getActive())
+                .sorted(Comparator.comparing(TopicLayer4::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer4ListActive;
+    }
+
+    @Override
     public void modifyTopicLayer1Db(TopicLayer1 topicLayer1) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
