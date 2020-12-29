@@ -65,7 +65,8 @@
             <c:forEach items="${topicsLayer1List}" var="topicsLayer1ListLoop">
               <tr>
                 <td>
-                  <a href="TopicsEditServlet?id=${topicsLayer1ListLoop.getIdLayer1()}&layer_id=1"><em
+                  <a
+                    href="TopicsEditServlet?unique_topic_record_id=${topicsLayer1ListLoop.getIdLayer1()}&layer_number=1"><em
                     class="fa fa-pencil-alt"></em></a>
                 </td>
                 <td>
@@ -94,11 +95,11 @@
                 <td>
                   <c:if test="${!topicsLayer1ListLoop.getActive()}">
                     <p class="text-muted">
-                        ${topicsLayer1ListLoop.getActive()}
+                      Nie
                     </p>
                   </c:if>
                   <c:if test="${topicsLayer1ListLoop.getActive()}">
-                    ${topicsLayer1ListLoop.getActive()}
+                    Tak
                   </c:if>
 
                 </td>
@@ -123,7 +124,8 @@
                 <c:if test="${topicsLayer1ListLoop.getIdLayer1() == topicsLayer2ListLoop.getFkIdLayer1()}">
                   <tr>
                     <td>
-                      <a href="TopicsEditServlet?id=${topicsLayer2ListLoop.getIdLayer2()}&layer_id=2"><em
+                      <a
+                        href="TopicsEditServlet?unique_topic_record_id=${topicsLayer2ListLoop.getIdLayer2()}&layer_number=2"><em
                         class="fa fa-pencil-alt"></em></a>
                     </td>
                     <td style="width:1px;white-space:nowrap"></td>
@@ -153,11 +155,11 @@
                     <td>
                       <c:if test="${!topicsLayer2ListLoop.getActive()}">
                         <p class="text-muted">
-                            ${topicsLayer2ListLoop.getActive()}
+                            Nie
                         </p>
                       </c:if>
                       <c:if test="${topicsLayer2ListLoop.getActive()}">
-                        ${topicsLayer2ListLoop.getActive()}
+                        Tak
                       </c:if>
 
                     </td>
@@ -184,7 +186,8 @@
                     test="${topicsLayer1ListLoop.getIdLayer1() == topicsLayer2ListLoop.getFkIdLayer1() && topicsLayer2ListLoop.getIdLayer2() == topicsLayer3ListLoop.getFkIdLayer2()}">
                     <tr>
                       <td>
-                        <a href="TopicsEditServlet?id=${topicsLayer3ListLoop.getIdLayer3()}&layer_id=3"><em
+                        <a
+                          href="TopicsEditServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=3"><em
                           class="fa fa-pencil-alt"></em></a>
                       </td>
                       <td style="width:1px;white-space:nowrap"></td>
@@ -214,11 +217,11 @@
                       <td>
                         <c:if test="${!topicsLayer3ListLoop.getActive()}">
                           <p class="text-muted">
-                              ${topicsLayer3ListLoop.getActive()}
+                              Nie
                           </p>
                         </c:if>
                         <c:if test="${topicsLayer3ListLoop.getActive()}">
-                          ${topicsLayer3ListLoop.getActive()}
+                          Tak
                         </c:if>
 
                       </td>
@@ -226,11 +229,13 @@
                         <c:set var="active" scope="session"
                                value="${topicsLayer3ListLoop.getActive()}"/>
                         <c:if test="${active}">
-                          <a href="TopicActiveInactiveServlet?layer_number=3&id=${topicsLayer3ListLoop.getIdLayer3()}"><em
+                          <a
+                            href="TopicActiveInactiveServlet?layer_number=3&id=${topicsLayer3ListLoop.getIdLayer3()}"><em
                             class="fa fa-trash"></em></a>
                         </c:if>
                         <c:if test="${!active}">
-                          <a href="TopicActiveInactiveServlet?layer_number=3&id=${topicsLayer3ListLoop.getIdLayer3()}"><em
+                          <a
+                            href="TopicActiveInactiveServlet?layer_number=3&id=${topicsLayer3ListLoop.getIdLayer3()}"><em
                             class="fa fa-plus"></em></a>
                         </c:if>
 
@@ -245,7 +250,8 @@
                       test="${topicsLayer1ListLoop.getIdLayer1() == topicsLayer2ListLoop.getFkIdLayer1() && topicsLayer2ListLoop.getIdLayer2() == topicsLayer3ListLoop.getFkIdLayer2() && topicsLayer3ListLoop.getIdLayer3() == topicsLayer4ListLoop.getFkIdLayer3()}">
                       <tr>
                         <td>
-                          <a href="TopicsEditServlet?id=${topicsLayer4ListLoop.getIdLayer4()}&layer_id=4"><em
+                          <a
+                            href="TopicsEditServlet?unique_topic_record_id=${topicsLayer4ListLoop.getIdLayer4()}&layer_number=4"><em
                             class="fa fa-pencil-alt"></em></a>
                         </td>
                         <td style="width:1px;white-space:nowrap"></td>
@@ -275,11 +281,11 @@
                         <td>
                           <c:if test="${!topicsLayer4ListLoop.getActive()}">
                             <p class="text-muted">
-                                ${topicsLayer4ListLoop.getActive()}
+                                Nie
                             </p>
                           </c:if>
                           <c:if test="${topicsLayer4ListLoop.getActive()}">
-                            ${topicsLayer4ListLoop.getActive()}
+                            Tak
                           </c:if>
 
                         </td>
@@ -287,11 +293,13 @@
                           <c:set var="active" scope="session"
                                  value="${topicsLayer4ListLoop.getActive()}"/>
                           <c:if test="${active}">
-                            <a href="TopicActiveInactiveServlet?layer_number=4&id=${topicsLayer4ListLoop.getIdLayer4()}"><em
+                            <a
+                              href="TopicActiveInactiveServlet?layer_number=4&id=${topicsLayer4ListLoop.getIdLayer4()}"><em
                               class="fa fa-trash"></em></a>
                           </c:if>
                           <c:if test="${!active}">
-                            <a href="TopicActiveInactiveServlet?layer_number=4&id=${topicsLayer4ListLoop.getIdLayer4()}"><em
+                            <a
+                              href="TopicActiveInactiveServlet?layer_number=4&id=${topicsLayer4ListLoop.getIdLayer4()}"><em
                               class="fa fa-plus"></em></a>
                           </c:if>
 
