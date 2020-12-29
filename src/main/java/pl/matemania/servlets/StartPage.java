@@ -35,11 +35,20 @@ public class StartPage extends HttpServlet {
         List<TopicLayer3> topicsLayer3List = topicsDao.getTopicLayer3FromDbSortedByOrderId();
         List<TopicLayer4> topicsLayer4List = topicsDao.getTopicLayer4FromDbSortedByOrderId();
 
+        List<TopicLayer1> topicsLayer1ListActive = topicsDao.getTopicLayer1FromDbActiveSortedByOrderId();
+        List<TopicLayer2> topicsLayer2ListActive = topicsDao.getTopicLayer2FromDbActiveSortedByOrderId();
+        List<TopicLayer3> topicsLayer3ListActive = topicsDao.getTopicLayer3FromDbActiveSortedByOrderId();
+        List<TopicLayer4> topicsLayer4ListActive = topicsDao.getTopicLayer4FromDbActiveSortedByOrderId();
 
         request.getSession().setAttribute("topicsLayer1List",topicsLayer1List);
         request.getSession().setAttribute("topicsLayer2List",topicsLayer2List);
         request.getSession().setAttribute("topicsLayer3List",topicsLayer3List);
         request.getSession().setAttribute("topicsLayer4List",topicsLayer4List);
+
+        request.getSession().setAttribute("topicsLayer1ListActive",topicsLayer1ListActive);
+        request.getSession().setAttribute("topicsLayer2ListActive",topicsLayer2ListActive);
+        request.getSession().setAttribute("topicsLayer3ListActive",topicsLayer3ListActive);
+        request.getSession().setAttribute("topicsLayer4ListActive",topicsLayer4ListActive);
 
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);

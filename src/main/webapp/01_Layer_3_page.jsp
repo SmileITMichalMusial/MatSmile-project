@@ -2,10 +2,7 @@
 <%@ page import="java.awt.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% request.getAttribute("topicsLayer1List"); %>
-<% request.getAttribute("topicsLayer2List"); %>
-<% request.getAttribute("topicsLayer3List"); %>
-<% request.getAttribute("topicsLayer4List"); %>
+<% request.getAttribute("topicsLayer4ListActive"); %>
 <% request.getAttribute("topicLayer3"); %>
 <c:set var="login" scope="session" value="${login}"/>
 <% request.getAttribute("userType"); %>
@@ -69,19 +66,19 @@
           <div class="col-5 col-sm-3">
 
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-              <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount">
-                <c:if test="${topicLayer3.getIdLayer3() == topicLayer4Loop.getFkIdLayer3()}">
+              <c:forEach items="${topicsLayer4ListActive}" var="topicsLayer4ListActiveLoop" varStatus="theCount">
+                <c:if test="${topicLayer3.getIdLayer3() == topicsLayer4ListActiveLoop.getFkIdLayer3()}">
                   <c:if test="${theCount.count == 1}">
                     <a class="nav-link active" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
                        href="#vert-tabs-home-${theCount.count}"
                        role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="true">${theCount.count}. ${topicLayer4Loop.getName()}</a>
+                       aria-selected="true">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
                   </c:if>
                   <c:if test="${theCount.count != 1}">
                     <a class="nav-link" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
                        href="#vert-tabs-home-${theCount.count}"
                        role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="false">${theCount.count}. ${topicLayer4Loop.getName()}</a>
+                       aria-selected="false">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
                   </c:if>
                 </c:if>
 
@@ -90,17 +87,17 @@
           </div>
           <div class="col-7 col-sm-9">
             <div class="tab-content" id="vert-tabs-tabContent">
-              <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount2">
-                <c:if test="${topicLayer3.getIdLayer3() == topicLayer4Loop.getFkIdLayer3()}">
+              <c:forEach items="${topicsLayer4ListActive}" var="topicsLayer4ListActiveLoop" varStatus="theCount2">
+                <c:if test="${topicLayer3.getIdLayer3() == topicsLayer4ListActiveLoop.getFkIdLayer3()}">
                   <c:if test="${theCount2.count == 1}">
                     <div class="tab-pane text-left fade show active" id="vert-tabs-home-${theCount2.count}"
                          role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4Loop.getContent()}
+                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
                     </div>
                   </c:if>
                   <c:if test="${theCount2.count != 1}">
                     <div class="tab-pane fade" id="vert-tabs-home-${theCount2.count}" role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4Loop.getContent()}
+                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
                     </div>
                   </c:if>
                 </c:if>

@@ -30,6 +30,9 @@ public interface TopicsDao {
     List<TopicLayer4> getTopicLayer4FromDbSortedByOrderId();
 
     List<TopicLayer1> getTopicLayer1FromDbActiveSortedByOrderId();
+    List<TopicLayer2> getTopicLayer2FromDbActiveSortedByOrderId();
+    List<TopicLayer3> getTopicLayer3FromDbActiveSortedByOrderId();
+    List<TopicLayer4> getTopicLayer4FromDbActiveSortedByOrderId();
 
     void modifyTopicLayer1Db(TopicLayer1 topicLayer1);
 
