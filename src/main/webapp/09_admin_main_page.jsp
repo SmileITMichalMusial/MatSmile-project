@@ -90,7 +90,7 @@
                    aria-labelledby="vert-tabs-messages-tab">
 
 
-                <c:if test="${topic_modification_action == 'modify_topic'}">
+                <c:if test="${topic_modification_action == 'modify_topic_layer_1' || topic_modification_action == 'modify_topic_layer_2' || topic_modification_action == 'modify_topic_layer_3' || topic_modification_action == 'modify_topic_layer_4'}">
                   <%@include file="05_01_topics_modify_admin.jsp" %>
                 </c:if>
 

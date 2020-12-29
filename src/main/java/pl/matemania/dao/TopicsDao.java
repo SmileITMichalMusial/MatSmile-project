@@ -35,5 +35,8 @@ public interface TopicsDao {
     List<TopicLayer4> getTopicLayer4FromDbActiveSortedByOrderId();
 
     void modifyTopicLayer1Db(TopicLayer1 topicLayer1);
+    void modifyTopicLayer2Db(TopicLayer2 topicLayer2);
+    void modifyTopicLayer3Db(TopicLayer3 topicLayer3);
+    void modifyTopicLayer4Db(TopicLayer4 topicLayer4);
 
 }
