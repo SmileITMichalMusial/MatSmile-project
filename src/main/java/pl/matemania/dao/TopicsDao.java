@@ -39,4 +39,9 @@ public interface TopicsDao {
     void modifyTopicLayer3Db(TopicLayer3 topicLayer3);
     void modifyTopicLayer4Db(TopicLayer4 topicLayer4);
 
+    void saveTopicLayer1ToDb(TopicLayer1 topicLayer1);
+    void saveTopicLayer2ToDb(TopicLayer2 topicLayer2);
+    void saveTopicLayer3ToDb(TopicLayer3 topicLayer3);
+    void saveTopicLayer4ToDb(TopicLayer4 topicLayer4);
+
 }
