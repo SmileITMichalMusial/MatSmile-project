@@ -354,4 +354,44 @@ public class TopicsDaoBean implements TopicsDao {
         entityManager.close();
     }
 
+    @Override
+    public void saveTopicLayer1ToDb(TopicLayer1 topicLayer1) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.persist(topicLayer1);
+        transaction.commit();
+        entityManager.close();
+    }
+
+    @Override
+    public void saveTopicLayer2ToDb(TopicLayer2 topicLayer2) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.persist(topicLayer2);
+        transaction.commit();
+        entityManager.close();
+    }
+
+    @Override
+    public void saveTopicLayer3ToDb(TopicLayer3 topicLayer3) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.persist(topicLayer3);
+        transaction.commit();
+        entityManager.close();
+    }
+
+    @Override
+    public void saveTopicLayer4ToDb(TopicLayer4 topicLayer4) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.persist(topicLayer4);
+        transaction.commit();
+        entityManager.close();
+    }
+
 }

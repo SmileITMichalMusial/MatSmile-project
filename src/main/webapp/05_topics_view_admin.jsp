@@ -117,7 +117,8 @@
 
 
                 </td>
-                <td>Dodaj wpis 1</td>
+                <td><a href="TopicsAddServlet?layer_number=1"><em
+                  class="fa fa-plus-circle"></em></a></td>
               </tr>
 
               <c:forEach items="${topicsLayer2List}" var="topicsLayer2ListLoop">
@@ -177,7 +178,8 @@
 
 
                     </td>
-                    <td>Dodaj wpis 2</td>
+                    <td><a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer1ListLoop.getIdLayer1()}&layer_number=2"><em
+                      class="fa fa-plus-circle"></em></a></td>
                   </tr>
                 </c:if>
 
@@ -241,7 +243,8 @@
 
 
                       </td>
-                      <td>Dodaj wpis 3</td>
+                      <td><a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer2ListLoop.getIdLayer2()}&layer_number=3"><em
+                        class="fa fa-plus-circle"></em></a></td>
                     </tr>
                   </c:if>
 
@@ -305,7 +308,8 @@
 
 
                         </td>
-                        <td>Dodaj wpis 4</td>
+                        <td><a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=4"><em
+                          class="fa fa-plus-circle"></em></a></td>
                       </tr>
                     </c:if>
 

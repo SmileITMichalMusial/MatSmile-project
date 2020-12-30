@@ -7,6 +7,7 @@
 <% request.getAttribute("topicsLayer3List"); %>
 <% request.getAttribute("topicsLayer4List"); %>
 <% request.getAttribute("userType"); %>
+<% request.getAttribute("topic_modification_action"); %>
 <% request.getAttribute("user_modification_action"); %>
 <c:set var="login" scope="session" value="${login}"/>
 
@@ -73,7 +74,8 @@
           <!-- Menu Madministratora po lewej -->
           <div class="col-4 col-sm-3">
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab"
+              <a class="nav-link active" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages"
+                 role="tab"
                  aria-controls="vert-tabs-messages" aria-selected="true">Edycja menu strony</a>
               <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile"
                  role="tab"
@@ -89,14 +91,27 @@
               <div class="tab-pane text-left fade show active" id="vert-tabs-messages" role="tabpanel"
                    aria-labelledby="vert-tabs-messages-tab">
 
-
-                <c:if test="${topic_modification_action == 'modify_topic_layer_1' || topic_modification_action == 'modify_topic_layer_2' || topic_modification_action == 'modify_topic_layer_3' || topic_modification_action == 'modify_topic_layer_4'}">
+                a
+                <c:if
+                  test="${topic_modification_action == 'modify_topic_layer_1' || topic_modification_action == 'modify_topic_layer_2' || topic_modification_action == 'modify_topic_layer_3' || topic_modification_action == 'modify_topic_layer_4'}">
+                  b
                   <%@include file="05_01_topics_modify_admin.jsp" %>
+                  c
                 </c:if>
+                d
+                <c:if
+                  test="${topic_modification_action == 'add_topic_layer_1' || topic_modification_action == 'add_topic_layer_2' || topic_modification_action == 'add_topic_layer_3' || topic_modification_action == 'add_topic_layer_4'}">
+                  e
+                  <%@include file="05_02_topics_add_admin.jsp" %>
+                  f
+                </c:if>
+                g
 
                 <c:if
                   test="${topic_modification_action == '' or topic_modification_action == null or topic_modification_action.equals('') or topic_modification_action.equals(null)}">
+                  h
                   <%@include file="05_topics_view_admin.jsp" %>
+                  i
                 </c:if>
 
               </div>
