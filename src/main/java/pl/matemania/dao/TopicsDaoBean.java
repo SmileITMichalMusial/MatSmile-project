@@ -394,4 +394,12 @@ public class TopicsDaoBean implements TopicsDao {
         entityManager.close();
     }
 
+    @Override
+    public boolean  layer1ContainsLayer2Records (String id_layer_1) {
+
+        return this.getTopicLayer2FromDbSortedByOrderId()
+                .stream()
+                .anyMatch(t -> t.getFkIdLayer1().equals(id_layer_1));
+    }
+
 }

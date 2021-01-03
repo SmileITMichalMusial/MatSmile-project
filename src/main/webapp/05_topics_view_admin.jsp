@@ -39,6 +39,16 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Menu portalu MateMania</h3>
+          <h6 class="small"><br><br>Legenda:<br>
+            <ul>
+              <li>kolumna "Dodaj nowy": Okrągły plusik dodaje nowy wiersz w danej warstwie i sekcji</li>
+              <li>kwadratowy plusik obok nazwy warstwy: pojawia się tylko wtedy gdy nie ma ani jednego wiersza w niższej warstwie. Tworzy
+                pierwszy rekord niższej warstwy
+              </li>
+              <li>koło zębate: aktywuje / deaktywuje wiersz (nieaktywne wiersze sią niewodiczne w menu dla użytkownika)</li>
+            </ul>
+
+          </h6>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -86,10 +96,25 @@
                   <c:if test="${!topicsLayer1ListLoop.getActive()}">
                     <p class="text-muted">
                         ${topicsLayer1ListLoop.getName()}
+                      <!-- sprawdzenie czy rekord warstwy jeden ma rekord-dziecko w warstwie 2. Jeśli nie ma to przycisk aby dodać -->
+                      <c:if
+                        test="${!topicsLayer2List.stream().anyMatch(l -> l.getFkIdLayer1().equals(topicsLayer1ListLoop.getIdLayer1()))}">
+                        <a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer1ListLoop.getIdLayer1()}&layer_number=2"><em
+                          class="fa fa-plus-square"></em></a>
+                      </c:if>
+                      <!-- koniec sprawdzenia czy rekord warstwy jeden ma rekord-dziecko w warstwie 2 -->
+
                     </p>
                   </c:if>
                   <c:if test="${topicsLayer1ListLoop.getActive()}">
                     ${topicsLayer1ListLoop.getName()}
+                    <!-- sprawdzenie czy rekord warstwy jeden ma rekord-dziecko w warstwie 2. Jeśli nie ma to przycisk aby dodać -->
+                    <c:if
+                      test="${!topicsLayer2List.stream().anyMatch(l -> l.getFkIdLayer1().equals(topicsLayer1ListLoop.getIdLayer1()))}">
+                      <a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer1ListLoop.getIdLayer1()}&layer_number=2"><em
+                        class="fa fa-plus-square"></em></a>
+                    </c:if>
+                    <!-- koniec sprawdzenia czy rekord warstwy jeden ma rekord-dziecko w warstwie 2 -->
                   </c:if>
                 </td>
                 <td>
@@ -147,16 +172,37 @@
                       <c:if test="${!topicsLayer2ListLoop.getActive()}">
                         <p class="text-muted">
                             ${topicsLayer2ListLoop.getName()}
+                          <!-- sprawdzenie czy rekord warstwy dwa  ma rekord-dziecko w warstwie 3. Jeśli nie ma to przycisk aby dodać -->
+                          <c:if
+                            test="${!topicsLayer3List.stream().anyMatch(l -> l.getFkIdLayer2().equals(topicsLayer2ListLoop.getIdLayer2()))}">
+                            <a
+                              href="TopicsAddServlet?unique_topic_record_id=${topicsLayer2ListLoop.getIdLayer2()}&layer_number=3"><em
+                              class="fa fa-plus-square"></em></a>
+                          </c:if>
+                          <!-- koniec sprawdzenia czy rekord warstwy dwa ma rekord-dziecko w warstwie 3 -->
                         </p>
                       </c:if>
                       <c:if test="${topicsLayer2ListLoop.getActive()}">
                         ${topicsLayer2ListLoop.getName()}
+                        <!-- sprawdzenie czy rekord warstwy dwa ma rekord-dziecko w warstwie 3. Jeśli nie ma to przycisk aby dodać
+                        Przycisk zawiera link do dodania warstwy drugiej (w odróżnieniu od kolumny "dodaj nowy" gdzie dodajemy daną warstwę (tutaj 1.)
+                        tzn: link pod plusem tutaj jest taki sam jak link pod plusem w warstwie drugiej
+                        -->
+
+                        <c:if
+                          test="${!topicsLayer3List.stream().anyMatch(l -> l.getFkIdLayer2().equals(topicsLayer2ListLoop.getIdLayer2()))}">
+                          <a
+                            href="TopicsAddServlet?unique_topic_record_id=${topicsLayer2ListLoop.getIdLayer2()}&layer_number=3"><em
+                            class="fa fa-plus-square"></em></a>
+                        </c:if>
+                        <!-- koniec sprawdzenia czy rekord warstwy dwa ma rekord-dziecko w warstwie 3 -->
+
                       </c:if>
                     </td>
                     <td>
                       <c:if test="${!topicsLayer2ListLoop.getActive()}">
                         <p class="text-muted">
-                            Nie
+                          Nie
                         </p>
                       </c:if>
                       <c:if test="${topicsLayer2ListLoop.getActive()}">
@@ -178,7 +224,8 @@
 
 
                     </td>
-                    <td><a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer1ListLoop.getIdLayer1()}&layer_number=2"><em
+                    <td><a
+                      href="TopicsAddServlet?unique_topic_record_id=${topicsLayer1ListLoop.getIdLayer1()}&layer_number=2"><em
                       class="fa fa-plus-circle"></em></a></td>
                   </tr>
                 </c:if>
@@ -210,16 +257,32 @@
                         <c:if test="${!topicsLayer3ListLoop.getActive()}">
                           <p class="text-muted">
                               ${topicsLayer3ListLoop.getName()}
+                            <!-- sprawdzenie czy rekord warstwy trzy   ma rekord-dziecko w warstwie 4. Jeśli nie ma to przycisk aby dodać -->
+                            <c:if
+                              test="${!topicsLayer4List.stream().anyMatch(l -> l.getFkIdLayer3().equals(topicsLayer3ListLoop.getIdLayer3()))}">
+                              <a
+                                href="TopicsAddServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=4"><em
+                                class="fa fa-plus-square"></em></a>
+                            </c:if>
+                            <!-- koniec sprawdzenia czy rekord warstwy trzy ma rekord-dziecko w warstwie 4 -->
                           </p>
                         </c:if>
                         <c:if test="${topicsLayer3ListLoop.getActive()}">
                           ${topicsLayer3ListLoop.getName()}
+                          <!-- sprawdzenie czy rekord warstwy trzy ma rekord-dziecko w warstwie 4. Jeśli nie ma to przycisk aby dodać -->
+                          <c:if
+                            test="${!topicsLayer4List.stream().anyMatch(l -> l.getFkIdLayer3().equals(topicsLayer3ListLoop.getIdLayer3()))}">
+                            <a
+                              href="TopicsAddServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=4"><em
+                              class="fa fa-plus-square"></em></a>
+                          </c:if>
+                          <!-- koniec sprawdzenia czy rekord warstwy trzy ma rekord-dziecko w warstwie 4 -->
                         </c:if>
                       </td>
                       <td>
                         <c:if test="${!topicsLayer3ListLoop.getActive()}">
                           <p class="text-muted">
-                              Nie
+                            Nie
                           </p>
                         </c:if>
                         <c:if test="${topicsLayer3ListLoop.getActive()}">
@@ -243,7 +306,8 @@
 
 
                       </td>
-                      <td><a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer2ListLoop.getIdLayer2()}&layer_number=3"><em
+                      <td><a
+                        href="TopicsAddServlet?unique_topic_record_id=${topicsLayer2ListLoop.getIdLayer2()}&layer_number=3"><em
                         class="fa fa-plus-circle"></em></a></td>
                     </tr>
                   </c:if>
@@ -284,7 +348,7 @@
                         <td>
                           <c:if test="${!topicsLayer4ListLoop.getActive()}">
                             <p class="text-muted">
-                                Nie
+                              Nie
                             </p>
                           </c:if>
                           <c:if test="${topicsLayer4ListLoop.getActive()}">
@@ -308,7 +372,8 @@
 
 
                         </td>
-                        <td><a href="TopicsAddServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=4"><em
+                        <td><a
+                          href="TopicsAddServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=4"><em
                           class="fa fa-plus-circle"></em></a></td>
                       </tr>
                     </c:if>

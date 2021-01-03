@@ -44,4 +44,6 @@ public interface TopicsDao {
     void saveTopicLayer3ToDb(TopicLayer3 topicLayer3);
     void saveTopicLayer4ToDb(TopicLayer4 topicLayer4);
 
+    boolean layer1ContainsLayer2Records (String id_layer_1);
+
 }
