@@ -91,27 +91,19 @@
               <div class="tab-pane text-left fade show active" id="vert-tabs-messages" role="tabpanel"
                    aria-labelledby="vert-tabs-messages-tab">
 
-                a
                 <c:if
                   test="${topic_modification_action == 'modify_topic_layer_1' || topic_modification_action == 'modify_topic_layer_2' || topic_modification_action == 'modify_topic_layer_3' || topic_modification_action == 'modify_topic_layer_4'}">
-                  b
                   <%@include file="05_01_topics_modify_admin.jsp" %>
-                  c
                 </c:if>
-                d
+
                 <c:if
                   test="${topic_modification_action == 'add_topic_layer_1' || topic_modification_action == 'add_topic_layer_2' || topic_modification_action == 'add_topic_layer_3' || topic_modification_action == 'add_topic_layer_4'}">
-                  e
                   <%@include file="05_02_topics_add_admin.jsp" %>
-                  f
                 </c:if>
-                g
 
                 <c:if
                   test="${topic_modification_action == '' or topic_modification_action == null or topic_modification_action.equals('') or topic_modification_action.equals(null)}">
-                  h
                   <%@include file="05_topics_view_admin.jsp" %>
-                  i
                 </c:if>
 
               </div>

@@ -34,8 +34,6 @@ public class AdminMainPageServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         request.getSession().getAttribute("listOfUsers");
-        // FIX_ME
-        // add topics refresh
 
         List<User> listOfUsers = usersDao.getUsersListFromDBSortedReversedActiveThenTypeThenId();
 
