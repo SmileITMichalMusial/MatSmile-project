@@ -102,12 +102,14 @@ class TopicsEditServlet extends HttpServlet {
         String name = req.getParameter("name");
         String order = req.getParameter("order");
         String comment = req.getParameter("comment");
+        String content = req.getParameter("content");
 
 
         req.getSession().setAttribute("name", name);
         req.getSession().setAttribute("order", order);
         req.getSession().setAttribute("comment", comment);
         req.getSession().setAttribute("layer_number", layer_number);
+        req.getSession().setAttribute("content",content);
         System.out.println("layer number to: " + layer_number);
 
         if (layer_number.equals("1")) {
@@ -123,7 +125,7 @@ class TopicsEditServlet extends HttpServlet {
             logger.info("Warstwa " +layer_number + " zaktualizowana:" +
                     " Name: " + name +
                     " | Kolejnosc: " + order +
-                    " | Zawartosc: " + comment
+                    " | Komentarz: " + comment
 
             );
             req.getSession().setAttribute("topic_modification_action", null);
@@ -147,7 +149,7 @@ class TopicsEditServlet extends HttpServlet {
             logger.info("Warstwa " +layer_number + " zaktualizowana:" +
                     " Name: " + name +
                     " | Kolejnosc: " + order +
-                    " | Zawartosc: " + comment
+                    " | Komentarz: " + comment
 
             );
             req.getSession().setAttribute("topic_modification_action", null);
@@ -171,7 +173,7 @@ class TopicsEditServlet extends HttpServlet {
             logger.info("Warstwa " +layer_number + " zaktualizowana:" +
                     " Name: " + name +
                     " | Kolejnosc: " + order +
-                    " | Zawartosc: " + comment
+                    " | Komentarz: " + comment
 
             );
             req.getSession().setAttribute("topic_modification_action", null);
@@ -188,6 +190,7 @@ class TopicsEditServlet extends HttpServlet {
             topicLayer4.setName(name);
             topicLayer4.setOrderId(Integer.parseInt(order));
             topicLayer4.setComment(comment);
+            topicLayer4.setContent(content);
             topicLayer4.setDateModified(Dates.getCurrentDateForDbModifications());
             topicsDao.modifyTopicLayer4Db(topicLayer4);
 
@@ -195,7 +198,8 @@ class TopicsEditServlet extends HttpServlet {
             logger.info("Warstwa " +layer_number + " zaktualizowana:" +
                     " Name: " + name +
                     " | Kolejnosc: " + order +
-                    " | Zawartosc: " + comment
+                    " | Komentarz: " + comment +
+                    " | Zawartość: " + comment
 
             );
             req.getSession().setAttribute("topic_modification_action", null);
@@ -203,6 +207,8 @@ class TopicsEditServlet extends HttpServlet {
             List<TopicLayer4> topicsLayer4ListActive = topicsDao.getTopicLayer4FromDbActiveSortedByOrderId();
             req.getSession().setAttribute("topicsLayer4List", topicsLayer4List);
             req.getSession().setAttribute("topicsLayer4ListActive", topicsLayer4ListActive);
+            req.setAttribute("topicsLayer4List", topicsLayer4List);
+            req.setAttribute("topicsLayer4ListActive", topicsLayer4ListActive);
 
         }
 

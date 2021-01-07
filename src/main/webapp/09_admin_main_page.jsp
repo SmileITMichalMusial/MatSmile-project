@@ -6,9 +6,15 @@
 <% request.getAttribute("topicsLayer2List"); %>
 <% request.getAttribute("topicsLayer3List"); %>
 <% request.getAttribute("topicsLayer4List"); %>
+<% request.getAttribute("topicsLayer4ListActive"); %>
 <% request.getAttribute("userType"); %>
 <% request.getAttribute("topic_modification_action"); %>
 <% request.getAttribute("user_modification_action"); %>
+<% request.getSession().getAttribute("topicsLayer1List"); %>
+<% request.getSession().getAttribute("topicsLayer2List"); %>
+<% request.getSession().getAttribute("topicsLayer3List"); %>
+<% request.getSession().getAttribute("topicsLayer4List"); %>
+<% request.getSession().getAttribute("topicsLayer4ListActive"); %>
 <c:set var="login" scope="session" value="${login}"/>
 
 
@@ -40,8 +46,23 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+  <!-- KateX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+          onload="renderMathInElement(document.body);"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
 
 
 </head>
@@ -240,5 +261,38 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- Summernote -->
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })
+</script>
+
+<script src="plugins/summernote/summernote-math.js"></script>
+
+<!-- Ustawienia Summernote -->
+<script>
+  $('#summernote').summernote({
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['style']],
+      ['font', ['bold', 'underline', 'strikethrough','clear']],
+      ['fontname', ['fontname']],
+      ['fontsize', ['fontsize']],
+      ['color', ['color']],
+      ['math', ['math']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['table', ['table']],
+      ['insert', ['link', 'picture', 'video','hr']],
+      ['view', ['fullscreen', 'codeview', 'help']]
+    ],
+    focus: true
+
+
+  });
+
+
+</script>
 </body>
 </html>
