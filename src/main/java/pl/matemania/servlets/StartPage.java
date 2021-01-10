@@ -1,7 +1,6 @@
 package pl.matemania.servlets;
 
 import pl.matemania.dao.TopicsDao;
-import pl.matemania.dao.UsersDao;
 import pl.matemania.domain.topics.TopicLayer1;
 import pl.matemania.domain.topics.TopicLayer2;
 import pl.matemania.domain.topics.TopicLayer3;
@@ -22,13 +21,14 @@ public class StartPage extends HttpServlet {
 
     @Inject
     TopicsDao topicsDao;
-    UsersDao usersDao;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
 
         List<TopicLayer1> topicsLayer1List = topicsDao.getTopicLayer1FromDbSortedByOrderId();
         List<TopicLayer2> topicsLayer2List = topicsDao.getTopicLayer2FromDbSortedByOrderId();

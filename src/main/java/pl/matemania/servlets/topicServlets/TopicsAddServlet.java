@@ -35,8 +35,8 @@ class TopicsAddServlet extends HttpServlet {
         String layer_number = req.getParameter("layer_number");
         String unique_topic_record_id = req.getParameter("unique_topic_record_id");
 
-        req.setAttribute(layer_number, "layer_number");
-        req.setAttribute("unique_topic_record_id", unique_topic_record_id);
+        //req.setAttribute(layer_number, "layer_number");
+        //req.setAttribute("unique_topic_record_id", unique_topic_record_id);
         req.getSession().setAttribute("layer_number", layer_number);
         req.getSession().setAttribute("unique_topic_record_id", unique_topic_record_id);
 
@@ -57,7 +57,6 @@ class TopicsAddServlet extends HttpServlet {
             // Pobierz rekord z warstwy wyżej aby go wyściwetlić na stronie by było widoczne pod jaką ścieżką dodaje się nowy
             TopicLayer1 topicLayer1 = topicsDao.getSingleTopicLayer1(Integer.parseInt(unique_topic_record_id));
             req.getSession().setAttribute("topicLayer1",topicLayer1);
-
             req.getSession().setAttribute("topic_modification_action", "add_topic_layer_2");
 
 

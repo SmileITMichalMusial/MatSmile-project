@@ -2,8 +2,8 @@
 <%@ page import="java.awt.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% request.getAttribute("topicsLayer4ListActive"); %>
-<% request.getAttribute("topicLayer3"); %>
+<% request.getSession().getAttribute("topicsLayer4ListActive"); %>
+<% request.getSession().getAttribute("topicLayer3"); %>
 <c:set var="login" scope="session" value="${login}"/>
 <% request.getAttribute("userType"); %>
 
