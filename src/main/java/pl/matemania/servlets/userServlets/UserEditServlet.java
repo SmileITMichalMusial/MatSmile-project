@@ -87,11 +87,10 @@ class UserEditServlet extends HttpServlet {
         req.getSession().setAttribute("user_modification_action", null);
 
 
-
+        // lista jest odświeżana w AdminMainPageServlet
         RequestDispatcher rd = req.getRequestDispatcher("09_admin_main_page.jsp");
         resp.sendRedirect(req.getContextPath() + "/AdminMainPageServlet");
         rd.forward(req, resp);
-
 
 
     }

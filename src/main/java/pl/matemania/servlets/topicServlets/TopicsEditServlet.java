@@ -35,8 +35,8 @@ class TopicsEditServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String unique_topic_record_id = req.getParameter("unique_topic_record_id");
         String layer_number = req.getParameter("layer_number");
-        req.setAttribute("unique_topic_record_id", unique_topic_record_id);
-        req.setAttribute(layer_number, "layer_number");
+        //req.setAttribute("unique_topic_record_id", unique_topic_record_id);
+        //req.setAttribute(layer_number, "layer_number");
         req.getSession().setAttribute("unique_topic_record_id", unique_topic_record_id);
         req.getSession().setAttribute("layer_number", layer_number);
 
@@ -46,7 +46,7 @@ class TopicsEditServlet extends HttpServlet {
             TopicLayer1 topicLayer1 = topicsDao.getSingleTopicLayer1(Integer.parseInt(unique_topic_record_id));
             System.out.println("Pobrany layer name:" + topicLayer1.getName() + "ID: " + topicLayer1.getIdLayer1());
 
-            req.setAttribute("topicLayer1", topicLayer1);
+            //req.setAttribute("topicLayer1", topicLayer1);
             req.getSession().setAttribute("topicLayer1", topicLayer1);
             req.getSession().setAttribute("topic_modification_action", "modify_topic_layer_1");
 
@@ -57,7 +57,7 @@ class TopicsEditServlet extends HttpServlet {
             TopicLayer2 topicLayer2 = topicsDao.getSingleTopicLayer2(Integer.parseInt(unique_topic_record_id));
             System.out.println("Pobrany layer name:" + topicLayer2.getName() + "ID: " + topicLayer2.getIdLayer2());
 
-            req.setAttribute("topicLayer2", topicLayer2);
+            //req.setAttribute("topicLayer2", topicLayer2);
             req.getSession().setAttribute("topicLayer2", topicLayer2);
             req.getSession().setAttribute("topic_modification_action", "modify_topic_layer_2");
 
@@ -68,7 +68,7 @@ class TopicsEditServlet extends HttpServlet {
             TopicLayer3 topicLayer3 = topicsDao.getSingleTopicLayer3(Integer.parseInt(unique_topic_record_id));
             System.out.println("Pobrany layer name:" + topicLayer3.getName() + "ID: " + topicLayer3.getIdLayer3());
 
-            req.setAttribute("topicLayer3", topicLayer3);
+            //req.setAttribute("topicLayer3", topicLayer3);
             req.getSession().setAttribute("topicLayer3", topicLayer3);
             req.getSession().setAttribute("topic_modification_action", "modify_topic_layer_3");
 
@@ -79,7 +79,7 @@ class TopicsEditServlet extends HttpServlet {
             TopicLayer4 topicLayer4 = topicsDao.getSingleTopicLayer4(Integer.parseInt(unique_topic_record_id));
             System.out.println("Pobrany layer name:" + topicLayer4.getName() + "ID: " + topicLayer4.getIdLayer4());
 
-            req.setAttribute("topicLayer4", topicLayer4);
+            //req.setAttribute("topicLayer4", topicLayer4);
             req.getSession().setAttribute("topicLayer4", topicLayer4);
             req.getSession().setAttribute("topic_modification_action", "modify_topic_layer_4");
 

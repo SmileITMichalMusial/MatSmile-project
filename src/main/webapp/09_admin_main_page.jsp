@@ -2,12 +2,8 @@
 <%@ page import="java.awt.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% request.getAttribute("topicsLayer1List"); %>
-<% request.getAttribute("topicsLayer2List"); %>
-<% request.getAttribute("topicsLayer3List"); %>
-<% request.getAttribute("topicsLayer4List"); %>
-<% request.getAttribute("topicsLayer4ListActive"); %>
-<% request.getAttribute("userType"); %>
+
+<% request.getSession().getAttribute("userType"); %>
 <% request.getAttribute("topic_modification_action"); %>
 <% request.getAttribute("user_modification_action"); %>
 <% request.getSession().getAttribute("topicsLayer1List"); %>

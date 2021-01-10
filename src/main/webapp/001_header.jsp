@@ -11,14 +11,11 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="index.jsp" class="nav-link">Główna</a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Kontakt</a>
+      <a href="StartPage" class="nav-link">Główna</a>
     </li>
   </ul>
 
-  <!-- Wyszukiwarka -->
+  <!-- Wyszukiwarka
   <form class="form-inline ml-3">
     <div class="input-group input-group-sm">
       <input class="form-control form-control-navbar" type="search" placeholder="Wyszukaj" aria-label="Search">
@@ -28,9 +25,9 @@
         </button>
       </div>
     </div>
-  </form>
+  </form>-->
 
-  <!-- Linki i góry po prawej -->
+  <!-- Linki u góry po prawej -->
   <ul class="navbar-nav ml-auto">
 
     <li class="nav-item">

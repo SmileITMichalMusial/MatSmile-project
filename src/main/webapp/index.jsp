@@ -1,16 +1,10 @@
-<%@ page import="javax.swing.*" %>
-<%@ page import="java.awt.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% request.getAttribute("topicsLayer1List"); %>
-<% request.getAttribute("topicsLayer2List"); %>
-<% request.getAttribute("topicsLayer3List"); %>
-<% request.getAttribute("topicsLayer4List"); %>
-<% request.getAttribute("topicsLayer1ListActive"); %>
-<% request.getAttribute("topicsLayer2ListActive"); %>
-<% request.getAttribute("topicsLayer3ListActive"); %>
-<% request.getAttribute("topicsLayer4ListActive"); %>
-<% request.getAttribute("userType"); %>
+<% request.getSession().getAttribute("topicsLayer1ListActive"); %>
+<% request.getSession().getAttribute("topicsLayer2ListActive"); %>
+<% request.getSession().getAttribute("topicsLayer3ListActive"); %>
+<% request.getSession().getAttribute("topicsLayer4ListActive"); %>
+<% request.getSession().getAttribute("userType"); %>
 <c:set var="login" scope="session" value="${login}"/>
 
 

@@ -26,7 +26,7 @@ public class TheoryViewServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String idLayer3 = request.getParameter("idLayer3");
         TopicLayer3 topicLayer3 = topicsDao.getSingleTopicLayer3(Integer.parseInt(idLayer3));
-        request.setAttribute("topicLayer3",topicLayer3);
+        request.getSession().setAttribute("topicLayer3",topicLayer3);
 
         RequestDispatcher rd = request.getRequestDispatcher("01_Layer_3_page.jsp");
         rd.forward(request, response);

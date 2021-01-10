@@ -50,8 +50,8 @@ class UserDeleteServlet extends HttpServlet {
                     " | Typ: " + user.getUserType()
             );
         }
-// FIX_ME
-// odswieaznie parametru sesji aby miec biezaca liste
+
+        // lista jest odświeżana w AdminMainPageServlet
         RequestDispatcher rd = req.getRequestDispatcher("09_admin_main_page.jsp");
         resp.sendRedirect(req.getContextPath() + "/AdminMainPageServlet");
         rd.forward(req, resp);

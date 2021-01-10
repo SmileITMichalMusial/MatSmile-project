@@ -26,9 +26,6 @@ class UserAddServletUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.setCharacterEncoding("UTF-8");
-        RequestDispatcher rd = req.getRequestDispatcher("/user.jsp");
-        rd.forward(req, resp);
 
     }
 

@@ -15,15 +15,6 @@
 <% request.getSession().getAttribute("topicLayer2"); %>
 <% request.getSession().getAttribute("topicLayer3"); %>
 <% request.getSession().getAttribute("topicLayer4"); %>
-<% request.getAttribute("topicsLayer1List"); %>
-<% request.getAttribute("topicsLayer2List"); %>
-<% request.getAttribute("topicsLayer3List"); %>
-<% request.getAttribute("topicsLayer4List"); %>
-<% request.getAttribute("topicsLayer4ListActive"); %>
-<% request.getAttribute("topicLayer1"); %>
-<% request.getAttribute("topicLayer2"); %>
-<% request.getAttribute("topicLayer3"); %>
-<% request.getAttribute("topicLayer4"); %>
 
 
 
