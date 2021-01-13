@@ -15,6 +15,9 @@ public interface TopicsDao {
     TopicLayer3 getSingleTopicLayer3 (int id);
     TopicLayer4 getSingleTopicLayer4 (int id);
 
+    TopicLayer3 getTopicLayer3WithNextOrderId (int orderIdLayer3, int fkIdLayer2);
+    TopicLayer3 getTopicLayer3WithPreviousOrderId (int orderIdLayer3, int fkIdLayer2);
+
     void markTopicLayer1AsInactiveInDb(int id);
     void markTopicLayer1AsActiveInDb(int id);
     void markTopicLayer2AsInactiveInDb(int id);
