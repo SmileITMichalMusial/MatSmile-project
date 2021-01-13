@@ -60,19 +60,24 @@
                       class="badge badge-info right">${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}</span>
                   </p>
                 </a>
-                <c:forEach items="${topicsLayer3ListActive}" var="topicsLayer3ListActiveLoop">
-                  <c:if test="${topicsLayer2ListActiveLoop.getIdLayer2() == topicsLayer3ListActiveLoop.getFkIdLayer2()}">
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item has-treeview">
-                        <a href="TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}" class="nav-link">
-                          <i class="far fa-check-circle nav-icon"></i>
-                          <p>
-                              ${topicsLayer3ListActiveLoop.getName()}
-                          </p>
-                        </a>
-                      </li>
-                    </ul>
-                  </c:if>
+                <!-- Filtrowanie aby dla wyswietlał tylko rekordy z warstwy trzeciej przypisane do danej warstwy drugiej
+                 uwaga! stream konczy się .toList() a nie collection .collect(Collectors.toList())-->
+                <c:forEach
+                  items="${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).toList()}"
+                  var="topicsLayer3ListActiveLoop" varStatus="loop">
+
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item has-treeview">
+                      <a href="TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}"
+                         class="nav-link">
+                        <i class="far nav-icon"></i>
+                        <p>
+                            ${loop.count}. ${topicsLayer3ListActiveLoop.getName()}
+                        </p>
+                      </a>
+                    </li>
+                  </ul>
+
                 </c:forEach>
               </li>
             </c:if>

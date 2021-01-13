@@ -18,6 +18,7 @@ public class TopicsDaoBean implements TopicsDao {
 
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
 
+
     @Override
     public TopicLayer1 getSingleTopicLayer1(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -45,6 +46,91 @@ public class TopicsDaoBean implements TopicsDao {
         TopicLayer4 topicLayer4 = entityManager.find(TopicLayer4.class, id);
         return topicLayer4;
     }
+
+
+    /**
+     * Metoda  getTopicLayer3WithNextOrderId służy do wyszukania  obiektu typu TopicLayer3 który
+     * posiada kolejny numer order_id dla powiązanej z nim warstwy drugiej (identyfikowanej przez fkIdLayer2)
+     * Metoda ma dwa parametry wejściowe: orderIdLayer3 - order_id dla warstwy trzeciej i fkIdLayer2 - klucz obcy
+     * identyfikujący warstwę drugą
+     *
+     * Na początku metody sprawdzamy czy istnieje kolejny order_id dla danego orderid warstwy trzeciej i powiązanej z nim warstwy drugiej
+     * Jeśli nie ustnieje to zwrata obiekt TopicLayer3 jako null, jesli istnieje to wyszukuje TopicLayer3 z kolejnym order_id
+     *
+     * get(0) nigdy nie zwróci błędu gdyż albo istnieje kolejny (sprawdzoen przez nextExists) albo jest to null
+     * Para fkIdLayer2 i orderIdLayer3 jest unikalna na bazie danych (klucz unique_orderid_layer_3)
+     *
+     * @param  orderIdLayer3  order_id warstwy trzeciej
+     * @param  fkIdLayer2 identyfikator warstwy drugiej
+     * @return      obiekt TopicLayer3 albo null (jesli nie istnieje kolejny)
+     */
+
+
+    @Override
+    public TopicLayer3 getTopicLayer3WithNextOrderId(int orderIdLayer3, int fkIdLayer2) {
+        List<TopicLayer3> topicLayer3List = getTopicLayer3FromDbSortedByOrderId();
+
+        boolean nextExists = topicLayer3List
+                .stream()
+                .anyMatch(r -> r.getFkIdLayer2().equals(fkIdLayer2) && r.getOrderId() > orderIdLayer3);
+
+        TopicLayer3 topicLayer3;
+        if (!nextExists) {
+            topicLayer3 = null;
+        } else {
+            topicLayer3 = topicLayer3List
+                    .stream()
+                    .filter(d -> d.getFkIdLayer2().equals(fkIdLayer2) && d.getOrderId() > orderIdLayer3 )
+                    .sorted(Comparator.comparing(TopicLayer3::getOrderId))
+                    .collect(Collectors.toList())
+                    .get(0);
+        }
+
+        return topicLayer3;
+
+    }
+
+    /**
+     * Metoda  getTopicLayer3WithPreviousOrderId służy do wyszukania  obiektu typu TopicLayer3 który
+     * posiada poprzedni numer order_id dla powiązanej z nim warstwy drugiej (identyfikowanej przez fkIdLayer2)
+     * Metoda ma dwa parametry wejściowe: orderIdLayer3 - order_id dla warstwy trzeciej i fkIdLayer2 - klucz obcy
+     * identyfikujący warstwę drugą
+     *
+     * Na początku metody sprawdzamy czy istnieje poprzedni order_id dla danego orderid warstwy trzeciej i powiązanej z nim warstwy drugiej
+     * Jeśli nie ustnieje to zwrata obiekt TopicLayer3 jako null, jesli istnieje to wyszukuje TopicLayer3 z kolejnym order_id
+     *
+     * get(0) nigdy nie zwróci błędu gdyż albo istnieje poprzedni (sprawdzoen przez nextExists) albo jest to null
+     * Para fkIdLayer2 i orderIdLayer3 jest unikalna na bazie danych (klucz unique_orderid_layer_3)
+     *
+     * @param  orderIdLayer3  order_id warstwy trzeciej
+     * @param  fkIdLayer2 identyfikator warstwy drugiej
+     * @return      obiekt TopicLayer3 albo null (jesli nie istnieje poprzedni)
+     */
+
+    @Override
+    public TopicLayer3 getTopicLayer3WithPreviousOrderId(int orderIdLayer3, int fkIdLayer2) {
+        List<TopicLayer3> topicLayer3List = getTopicLayer3FromDbSortedByOrderId();
+
+        boolean previousExists = topicLayer3List
+                .stream()
+                .anyMatch(p -> p.getFkIdLayer2().equals(fkIdLayer2) && p.getOrderId() < orderIdLayer3);
+
+        TopicLayer3 topicLayer3;
+        if (!previousExists) {
+            topicLayer3 = null;
+        } else {
+            topicLayer3 = topicLayer3List
+                    .stream()
+                    .filter(d -> d.getFkIdLayer2().equals(fkIdLayer2) && d.getOrderId() < orderIdLayer3)
+                    .sorted(Comparator.comparing(TopicLayer3::getOrderId).reversed())
+                    .collect(Collectors.toList())
+                    .get(0);
+        }
+
+        return topicLayer3;
+
+    }
+
 
     @Override
     public void markTopicLayer1AsInactiveInDb(int id) {
@@ -395,7 +481,7 @@ public class TopicsDaoBean implements TopicsDao {
     }
 
     @Override
-    public boolean  layer1ContainsLayer2Records (String id_layer_1) {
+    public boolean layer1ContainsLayer2Records(String id_layer_1) {
 
         return this.getTopicLayer2FromDbSortedByOrderId()
                 .stream()
