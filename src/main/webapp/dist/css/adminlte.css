@@ -1,7 +1,8 @@
 /*!
  *   AdminLTE v3.0.5
  *   Author: Colorlib
- *   Website: AdminLTE.io <http://adminlte.io>
+ *   We
+ bsite: AdminLTE.io <http://adminlte.io>
  *   License: Open source - MIT <http://opensource.org/licenses/MIT>
  */
 /*!
@@ -64,7 +65,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #292921;
   text-align: left;
   background-color: #ffffff;
 }
@@ -12280,12 +12281,12 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 .sidebar-dark-blue .nav-sidebar > .nav-item > .nav-link.active,
 .sidebar-light-blue .nav-sidebar > .nav-item > .nav-link.active {
   background-color: #007bff;
-  color: #ffffff;
+  color: #ffffff;;
 }
 
 .sidebar-dark-blue .nav-sidebar.nav-legacy > .nav-item > .nav-link.active,
 .sidebar-light-blue .nav-sidebar.nav-legacy > .nav-item > .nav-link.active {
-  border-color: #007bff;
+  border-color: #ffffff;;
 }
 
 .sidebar-dark-indigo .nav-sidebar > .nav-item > .nav-link.active,
@@ -12418,6 +12419,15 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 .sidebar-dark-gray-dark .nav-sidebar.nav-legacy > .nav-item > .nav-link.active,
 .sidebar-light-gray-dark .nav-sidebar.nav-legacy > .nav-item > .nav-link.active {
   border-color: #343a40;
+}bg-
+
+.sidebar-jasny-niebieski .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: #e9d65b;
+  color: #6ee226;
+}
+
+.sidebar-jasny-niebieski .nav-sidebar.nav-legacy > .nav-item > .nav-link.active {
+  border-color: #ee6585;
 }
 
 .sidebar-mini .main-sidebar:not(.sidebar-no-expand) .nav-compact.nav-sidebar.nav-child-indent:not(.nav-flat) .nav-treeview,
@@ -13823,6 +13833,10 @@ body.text-sm .control-sidebar {
 
 .navbar-blue {
   background-color: #007bff;
+}
+
+.navbar-niebieski-ciemny {
+  background-color: #38b0de;
 }
 
 .navbar-indigo {
