@@ -21,3 +21,39 @@ https://www.codecogs.com/latex/eqneditor.php
 webapp/build/js/Treeview.js
 
 ORM mapping dodajemy pozniej do pliku persistance.xml
+
+
+-- -- kolory strony ----
+menu po lewej tło
+1. wywołanie jest w pliku 002_left_menu.jsp, w klasie navbar-blue. Klasa navbar-blue jest opisana w adminlte.css,
+a nadpisana w pliku styles_my.css ktory nadpisuje na moje potrzeby
+
+aby na jasno niebiesko jak akademia
+
+.navbar-blue {
+  background-color: #38B0DE;
+}
+
+2. <link rel="stylesheet" href="dist/css/styles_my.css"> musi byc dodane w kazdym pliku ktory buduje strone (  w odwołaniach juz nie) pod <link rel="stylesheet" href="dist/css/adminlte.min.css">
+Jest dodany w stronach:
+- 01_Layer_3_page.jsp
+- 09_admin_main_page.jsp
+- index.jsp
+- 01_L_login_page.jsp
+- 01_L_add_user_page.jsp
+
+3. Aby ustawić białą czcionkę dopisujemy: navbar-dark bg-lightblue
+4. Aby były ładne linki w ul dodajemy navbar-nav <ul class="nav nav-treeview navbar-nav"> i z klasy <u> usuwamy nav-pills
+
+menu-open - ustawia ze manu jest zawsze otwarte (rozwiniete)
+
+---- inne ---
+flex-column - ustawia elementy listy rozwijalnej ładnie jeden pod drugim
+nav-header - tutaj jest opisana czcionka i kolory warstwy 2,3  w menu po lewej
+nav-item - tutaj jest opisana czcionka i kolory warstwy 2 i 3 w menu po lewej
+nav-link tutaj jest opisana czcionka i kolory linków warstwy 2 i 3 w menu po lewej
+
+
+--------------- temporary
+
+TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}
