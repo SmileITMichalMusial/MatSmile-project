@@ -61,7 +61,9 @@
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     ${topicsLayer2ListActiveLoop.getName()}
-                  <i class="fas fa-angle-left right"></i>
+                  <i class="right fas fa-angle-right"></i>
+                      <span
+                        class="badge badge-info right">${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}</span>
                 </p>
               </a>
               <ul class="nav nav-treeview">

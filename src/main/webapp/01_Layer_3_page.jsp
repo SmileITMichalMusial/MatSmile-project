@@ -62,17 +62,46 @@
       <div class="card-header">
         <div class="container-fluid">
 
+
           <div class="row">
             <!--<i class="fas fa-edit"></i> -->
             <div class="col-4 col-sm-4 float-left">
-              ${previousTopicLayer3.getName()}
+              <c:if
+                test="${previousTopicLayer3.getName() != null && previousTopicLayer3.getActive()}">
+
+                <ol class="breadcrumb float-sm-left">
+                  <li class="breadcrumb-item active">
+
+                    <h6 class="small">Poprzedni temat: </h6></small><a
+                    href="TheoryViewServlet?idLayer3=${previousTopicLayer3.getIdLayer3()}">
+                      ${previousTopicLayer3.getName()} </a></li>
+                </ol>
+                </a>
+
+
+              </c:if>
             </div>
             <div class="col-4 col-sm-4">
-              ${topicLayer1.getName()} / ${topicLayer2.getName()} / ${topicLayer3.getName()}
+              <h6 class="small">Jesteś w dziale: </h6>${topicLayer1.getName()} / ${topicLayer2.getName()}
+              / ${topicLayer3.getName()}
+
+
             </div>
             <div class="col-4 col-sm-4 float-right">
               <div class="float-right">
-                ${nextTopicLayer3.getName()}
+
+
+                <c:if
+                  test="${nextTopicLayer3.getName() != null && nextTopicLayer3.getActive()}">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">
+                      <h6 class="small">Następny temat: </h6><a
+                      href="TheoryViewServlet?idLayer3=${nextTopicLayer3.getIdLayer3()}">
+                        ${nextTopicLayer3.getName()} </a>
+                  </ol>
+                  </a>
+
+                </c:if>
               </div>
             </div>
 
@@ -91,18 +120,18 @@
                 items="${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicLayer3.getIdLayer3())).toList()}"
                 var="topicsLayer4ListActiveLoop" varStatus="theCount">
 
-                  <c:if test="${theCount.count == 1}">
-                    <a class="nav-link active" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
-                       href="#vert-tabs-home-${theCount.count}"
-                       role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="true">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
-                  </c:if>
-                  <c:if test="${theCount.count != 1}">
-                    <a class="nav-link" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
-                       href="#vert-tabs-home-${theCount.count}"
-                       role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                       aria-selected="false">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
-                  </c:if>
+                <c:if test="${theCount.count == 1}">
+                  <a class="nav-link active" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
+                     href="#vert-tabs-home-${theCount.count}"
+                     role="tab" aria-controls="vert-tabs-home-${theCount.count}"
+                     aria-selected="true">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
+                </c:if>
+                <c:if test="${theCount.count != 1}">
+                  <a class="nav-link" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
+                     href="#vert-tabs-home-${theCount.count}"
+                     role="tab" aria-controls="vert-tabs-home-${theCount.count}"
+                     aria-selected="false">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
+                </c:if>
 
 
               </c:forEach>
@@ -114,17 +143,17 @@
                 items="${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicLayer3.getIdLayer3())).toList()}"
                 var="topicsLayer4ListActiveLoop" varStatus="theCount2">
 
-                  <c:if test="${theCount2.count == 1}">
-                    <div class="tab-pane text-left fade show active" id="vert-tabs-home-${theCount2.count}"
-                         role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
-                    </div>
-                  </c:if>
-                  <c:if test="${theCount2.count != 1}">
-                    <div class="tab-pane fade" id="vert-tabs-home-${theCount2.count}" role="tabpanel"
-                         aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
-                    </div>
-                  </c:if>
+                <c:if test="${theCount2.count == 1}">
+                  <div class="tab-pane text-left fade show active" id="vert-tabs-home-${theCount2.count}"
+                       role="tabpanel"
+                       aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
+                  </div>
+                </c:if>
+                <c:if test="${theCount2.count != 1}">
+                  <div class="tab-pane fade" id="vert-tabs-home-${theCount2.count}" role="tabpanel"
+                       aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
+                  </div>
+                </c:if>
 
               </c:forEach>
             </div>
