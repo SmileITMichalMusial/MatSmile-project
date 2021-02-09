@@ -13,6 +13,10 @@
 <% request.getSession().getAttribute("topicLayer3"); %>
 <% request.getSession().getAttribute("nextTopicLayer3"); %>
 <% request.getSession().getAttribute("previousTopicLayer3"); %>
+<% request.getSession().getAttribute("id_layer_2_to_display"); %>
+<% request.getSession().getAttribute("topicsLayer3ToDisplay"); %>
+
+
 
 
 <!DOCTYPE html>
@@ -67,15 +71,24 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Matemania - Twój matematyczny przewodnik</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#"> </a></li>
-              <li class="breadcrumb-item active"> </li>
-            </ol>
-          </div><!-- /.col -->
+          <div class="col-sm-2 col-lg-2 col-md-2">
+            <c:if
+              test="${id_layer_2_to_display != null}">
+              <a href="StartPageContent"> <button type="button" href="09_admin_main_page.jsp" class="btn btn-block btn-default btn-outline-light bg-gradient-lightblue"><i
+                class="fas fa-chevron-circle-left"></i>&nbsp;Menu główne
+              </button></a>
+            </c:if>
+
+          </div>
+
+          <div class="col-sm-10 col-lg-10 col-md-10">
+            <h3 class="m-0">Matemania - Twój matematyczny przewodnik</h3>
+
+
+          </div>
+
+          <!-- /.col -->
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -84,68 +97,92 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
 
-                <p>Ilość działów</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">Więcej <i class="fas fa-arrow-circle-right"></i></a>
+        <!-- Wyświetl wszystkie warstwy jeśli parametr layer_2_to_display jest null (użytkownik nie wybrał nic na stronie głównej -->
+        <c:if
+          test="${id_layer_2_to_display == '' or id_layer_2_to_display == null or id_layer_2_to_display.equals('') or id_layer_2_to_display.equals(null)}">
+
+          <c:forEach items="${topicsLayer1ListActive}" var="topicsLayer1ListActiveLoop">
+            ${topicsLayer1ListActiveLoop.getName()}
+
+            <div class="row">
+
+
+              <c:forEach items="${topicsLayer2ListActive}" var="topicsLayer2ListActiveLoop" varStatus="myIndex">
+
+
+                <c:if test="${topicsLayer1ListActiveLoop.getIdLayer1() == topicsLayer2ListActiveLoop.getFkIdLayer1()}">
+
+
+                  <div class="col-lg-2 col-6">
+                    <!-- small box -->
+                    <div class="small-box ${topicsLayer2ListActiveLoop.getFe_menu_color()}">
+                      <div class="inner">
+                        <h6>${topicsLayer2ListActiveLoop.getName()}</h6>
+
+                        <h3>${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}</h3>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ${topicsLayer2ListActiveLoop.getFe_menu_icon()}"></i>
+                      </div>
+                      <a href="StartPageContent?id_layer_2_to_display=${topicsLayer2ListActiveLoop.getIdLayer2()}"
+                         class="small-box-footer">Więcej <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+
+                  <!-- ./col -->
+
+                </c:if>
+              </c:forEach>
+
+
+              <!-- ./col -->
+            </div>
+          </c:forEach>
+        </c:if>
+        <!-- Wyświetl rekordy tylko z warstwy 3 (dla wybranej warstwy drugiej -->
+        <c:if
+          test="${id_layer_2_to_display != null}">
+
+          <div class="row">
+            <div class="col-2 col-sm-2 float-left">
+
+            </div>
+            <div class="col-10 col-sm-10">
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>100</h3>
 
-                <p>Ilość tematów</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">Więcej <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
+          <div class="row">
 
-                <p>Tematy przerobione</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">Więcej <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
 
-                <p>Do zrobienia</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">Więcej <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+            <c:forEach items="${topicsLayer3ListActive}" var="topicsLayer3ListActiveLoop" varStatus="myIndex">
+              <c:if test="${topicsLayer3ListActiveLoop.getFkIdLayer2() == id_layer_2_to_display}">
+
+
+                <div class="col-lg-2 col-6">
+                  <!-- small box -->
+                  <div class="small-box ${topicsLayer3ListActiveLoop.getFe_menu_color()}">
+                    <div class="inner">
+                      <h6>${topicsLayer3ListActiveLoop.getName()}</h6>
+
+                      <h3>${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicsLayer3ListActiveLoop.getIdLayer3())).count()}</h3>
+
+
+                    </div>
+                    <div class="icon">
+
+                      <i class="ion ${topicsLayer3ListActiveLoop.getFe_menu_icon()}"></i>
+                    </div>
+                    <a href="TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}"
+                       class="small-box-footer">Więcej <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+
+
+              </c:if>
+            </c:forEach>
           </div>
-          <!-- ./col -->
-        </div>
+        </c:if>
 
       </div><!-- /.container-fluid -->
     </section>

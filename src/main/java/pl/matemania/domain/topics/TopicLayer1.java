@@ -19,6 +19,7 @@ public class TopicLayer1 {
     @Column(name = "name", nullable = false)
     private String name;
 
+
     @Column(name = "comment" )
     private String comment;
 

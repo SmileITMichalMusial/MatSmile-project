@@ -25,6 +25,11 @@ public class TopicLayer2 {
     @Column(name = "comment")
     private String comment;
 
+    @Column(name = "fe_menu_icon")
+    private String fe_menu_icon;
+
+    @Column(name = "fe_menu_color")
+    private String fe_menu_color;
 
     @Column(name = "is_active", nullable = false)
     private Boolean isActive;
@@ -77,6 +82,22 @@ public class TopicLayer2 {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getFe_menu_icon() {
+        return fe_menu_icon;
+    }
+
+    public void setFe_menu_icon(String fe_menu_icon) {
+        this.fe_menu_icon = fe_menu_icon;
+    }
+
+    public String getFe_menu_color() {
+        return fe_menu_color;
+    }
+
+    public void setFe_menu_color(String fe_menu_color) {
+        this.fe_menu_color = fe_menu_color;
     }
 
     public Boolean getActive() {

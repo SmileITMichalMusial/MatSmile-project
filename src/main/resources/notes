@@ -53,7 +53,77 @@ nav-header - tutaj jest opisana czcionka i kolory warstwy 2,3  w menu po lewej
 nav-item - tutaj jest opisana czcionka i kolory warstwy 2 i 3 w menu po lewej
 nav-link tutaj jest opisana czcionka i kolory linków warstwy 2 i 3 w menu po lewej
 
+-------------------------ikony na stronie głównej
+
+<i class="ion ion-calculator"></i>
+
+dodajemy zamiast calculator słowo ze strony
+https://ionicons.com/
+
 
 --------------- temporary
 
 TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}
+
+fe_main_page_icon
+fe_main_page_color
+
+
+--- tekst
+
+wysrodkowany:
+<h3 class="m-0 text-center text-sm-center">Matemania - Twój matematyczny przewodnik</h3>
+
+
+---- stare menu lewo prawo
+
+<div class="row">
+            <!--<i class="fas fa-edit"></i> -->
+            <div class="col-4 col-sm-4 float-left">
+
+              <c:if
+                test="${previousTopicLayer3.getName() != null && previousTopicLayer3.getActive()}">
+
+                <ol class="breadcrumb float-sm-left">
+                  <li class="breadcrumb-item active">
+
+                    <h6 class="small">Poprzedni temat: </h6></small><a
+                    href="TheoryViewServlet?idLayer3=${previousTopicLayer3.getIdLayer3()}">
+                      ${previousTopicLayer3.getName()} </a></li>
+                </ol>
+                </a>
+
+
+              </c:if>
+
+            </div>
+            <div class="col-4 col-sm-4">
+              <h6 class="small">Jesteś w dziale: </h6>${topicLayer1.getName()} / ${topicLayer2.getName()}
+              / ${topicLayer3.getName()}
+
+
+            </div>
+            <div class="col-4 col-sm-4 float-right">
+              <div class="float-right">
+
+
+                <c:if
+                  test="${nextTopicLayer3.getName() != null && nextTopicLayer3.getActive()}">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">
+                      <h6 class="small">Następny temat: </h6><a
+                      href="TheoryViewServlet?idLayer3=${nextTopicLayer3.getIdLayer3()}">
+                        ${nextTopicLayer3.getName()} </a>
+                  </ol>
+                  </a>
+
+                </c:if>
+              </div>
+            </div>
+
+          </div>
+
+
+--- jesli dodaję klasę  <div class="float-left"> to rozmiar przycisku dopasowuje sie do długości tekstu
+
+${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}

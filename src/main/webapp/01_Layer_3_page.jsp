@@ -65,44 +65,42 @@
 
           <div class="row">
             <!--<i class="fas fa-edit"></i> -->
-            <div class="col-4 col-sm-4 float-left">
-              <c:if
-                test="${previousTopicLayer3.getName() != null && previousTopicLayer3.getActive()}">
+            <div class="col-3 col-sm-3 float-left">
 
-                <ol class="breadcrumb float-sm-left">
-                  <li class="breadcrumb-item active">
+                <c:if
+                  test="${previousTopicLayer3.getName() != null && previousTopicLayer3.getActive()}">
 
-                    <h6 class="small">Poprzedni temat: </h6></small><a
-                    href="TheoryViewServlet?idLayer3=${previousTopicLayer3.getIdLayer3()}">
-                      ${previousTopicLayer3.getName()} </a></li>
-                </ol>
-                </a>
+                  <a href="TheoryViewServlet?idLayer3=${previousTopicLayer3.getIdLayer3()}">
+                    <button type="button" class="btn btn-block btn-default btn-outline-light bg-gradient-lightblue"><i
+                      class="fas fa-chevron-circle-left"></i>&nbsp;${previousTopicLayer3.getName()}
+                    </button>
+                  </a>
 
 
-              </c:if>
+                </c:if>
+
             </div>
-            <div class="col-4 col-sm-4">
-              <h6 class="small">Jesteś w dziale: </h6>${topicLayer1.getName()} / ${topicLayer2.getName()}
+            <div class="col-6 col-sm-6 text-sm-center text-center">
+              <h6 class="small">Jesteś w dziale: </h6> <a href="StartPageContent"> ${topicLayer1.getName()} </a> / <a href="StartPageContent?id_layer_2_to_display=${topicLayer2.getIdLayer2()}"> ${topicLayer2.getName()} </a>
               / ${topicLayer3.getName()}
 
 
             </div>
-            <div class="col-4 col-sm-4 float-right">
-              <div class="float-right">
+            <div class="col-3 col-sm-3 float-right">
+
 
 
                 <c:if
                   test="${nextTopicLayer3.getName() != null && nextTopicLayer3.getActive()}">
-                  <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item active">
-                      <h6 class="small">Następny temat: </h6><a
-                      href="TheoryViewServlet?idLayer3=${nextTopicLayer3.getIdLayer3()}">
-                        ${nextTopicLayer3.getName()} </a>
-                  </ol>
+                  <a href="TheoryViewServlet?idLayer3=${nextTopicLayer3.getIdLayer3()}">
+                    <button type="button" class="btn btn-block btn-default btn-outline-light bg-gradient-lightblue">
+                      &nbsp;${nextTopicLayer3.getName()}&nbsp;
+                      <i
+                        class="fas fa-chevron-circle-right"></i></button>
                   </a>
 
                 </c:if>
-              </div>
+
             </div>
 
           </div>

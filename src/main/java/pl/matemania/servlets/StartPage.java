@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet("/StartPage")
 public class StartPage extends HttpServlet {
@@ -29,7 +31,6 @@ public class StartPage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
         List<TopicLayer1> topicsLayer1List = topicsDao.getTopicLayer1FromDbSortedByOrderId();
         List<TopicLayer2> topicsLayer2List = topicsDao.getTopicLayer2FromDbSortedByOrderId();
         List<TopicLayer3> topicsLayer3List = topicsDao.getTopicLayer3FromDbSortedByOrderId();
@@ -40,19 +41,35 @@ public class StartPage extends HttpServlet {
         List<TopicLayer3> topicsLayer3ListActive = topicsDao.getTopicLayer3FromDbActiveSortedByOrderId();
         List<TopicLayer4> topicsLayer4ListActive = topicsDao.getTopicLayer4FromDbActiveSortedByOrderId();
 
-        request.getSession().setAttribute("topicsLayer1List",topicsLayer1List);
-        request.getSession().setAttribute("topicsLayer2List",topicsLayer2List);
-        request.getSession().setAttribute("topicsLayer3List",topicsLayer3List);
-        request.getSession().setAttribute("topicsLayer4List",topicsLayer4List);
 
-        request.getSession().setAttribute("topicsLayer1ListActive",topicsLayer1ListActive);
-        request.getSession().setAttribute("topicsLayer2ListActive",topicsLayer2ListActive);
-        request.getSession().setAttribute("topicsLayer3ListActive",topicsLayer3ListActive);
-        request.getSession().setAttribute("topicsLayer4ListActive",topicsLayer4ListActive);
+
+        request.getSession().setAttribute("topicsLayer1List", topicsLayer1List);
+        request.getSession().setAttribute("topicsLayer2List", topicsLayer2List);
+        request.getSession().setAttribute("topicsLayer3List", topicsLayer3List);
+        request.getSession().setAttribute("topicsLayer4List", topicsLayer4List);
+
+        request.getSession().setAttribute("topicsLayer1ListActive", topicsLayer1ListActive);
+        request.getSession().setAttribute("topicsLayer2ListActive", topicsLayer2ListActive);
+        request.getSession().setAttribute("topicsLayer3ListActive", topicsLayer3ListActive);
+        request.getSession().setAttribute("topicsLayer4ListActive", topicsLayer4ListActive);
+
+
+
+        String id_layer_2_to_display = request.getParameter("id_layer_2_to_display");
+        request.getSession().setAttribute("id_layer_2_to_display", id_layer_2_to_display);
+
+        List<TopicLayer3> topicsLayer3ToDisplay = topicsLayer3ListActive
+                .stream()
+                .filter(p -> p.getFkIdLayer2()
+                        .equals(id_layer_2_to_display))
+                .collect(Collectors.toList());
+
+        request.getSession().setAttribute("topicsLayer3ToDisplay", topicsLayer3ToDisplay);
 
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);
     }
 
-    public StartPage() {}
+    public StartPage() {
+    }
 }
