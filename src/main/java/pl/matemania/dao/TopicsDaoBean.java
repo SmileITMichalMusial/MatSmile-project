@@ -9,6 +9,7 @@ import pl.matemania.domain.topics.TopicLayer4;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -126,6 +127,9 @@ public class TopicsDaoBean implements TopicsDao {
                     .collect(Collectors.toList())
                     .get(0);
         }
+
+
+
 
         return topicLayer3;
 
@@ -487,5 +491,8 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .anyMatch(t -> t.getFkIdLayer1().equals(id_layer_1));
     }
+
+
+
 
 }

@@ -5,7 +5,7 @@
 
 <aside class="main-sidebar sidebar-dark-blue bg-lightblue elevation-4">
   <!-- Brand Logo -->
-  <a href="StartPage" class="brand-link">
+  <a href="StartPageContent" class="brand-link">
     <img src="dist/img/MatSmile_logo.jpg" alt="Matsmile Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
     <span class="brand-text font-weight-light ">MateMania</span>
@@ -64,6 +64,9 @@
                   <i class="right fas fa-angle-right"></i>
                       <span
                         class="badge badge-info right">${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}</span>
+
+
+
                 </p>
               </a>
               <ul class="nav nav-treeview">
@@ -73,8 +76,13 @@
                   <li class="nav-item">
                     <a href="TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}"
                        class="nav-link">
-                      <i class="far nav-icon"></i>
-                      <p>${loop.count}. ${topicsLayer3ListActiveLoop.getName()}</p>
+
+                      <p>${loop.count}. ${topicsLayer3ListActiveLoop.getName()}
+                        <i class="right fas fa-angle-right"></i>
+                        <span
+                          class="badge badge-info right">${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicsLayer3ListActiveLoop.getIdLayer3())).count()}</span>
+
+                      </p>
                     </a>
                   </li>
                 </c:forEach>

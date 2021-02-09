@@ -6,6 +6,7 @@ import pl.matemania.domain.topics.TopicLayer2;
 import pl.matemania.domain.topics.TopicLayer3;
 import pl.matemania.domain.topics.TopicLayer4;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface TopicsDao {
@@ -48,5 +49,7 @@ public interface TopicsDao {
     void saveTopicLayer4ToDb(TopicLayer4 topicLayer4);
 
     boolean layer1ContainsLayer2Records (String id_layer_1);
+
+
 
 }
