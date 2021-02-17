@@ -126,4 +126,6 @@ wysrodkowany:
 
 --- jesli dodaję klasę  <div class="float-left"> to rozmiar przycisku dopasowuje sie do długości tekstu
 
+--- stream aby zliczyc ile jest warstwy trzeciej dla warstwy drugiej (usuniety po trigerach i dodaniu counter_layer_4 dla tabeli topic_layer_2
+
 ${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}

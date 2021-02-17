@@ -63,7 +63,7 @@
                     ${topicsLayer2ListActiveLoop.getName()}
                   <i class="right fas fa-angle-right"></i>
                       <span
-                        class="badge badge-info right">${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}</span>
+                        class="badge badge-info right">${topicsLayer2ListActiveLoop.getCounter_layer_4()}</span>
 
 
 
