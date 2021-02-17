@@ -31,6 +31,9 @@ public class TopicLayer2 {
     @Column(name = "fe_menu_color")
     private String fe_menu_color;
 
+    @Column(name = "counter_layer_4")
+    private Integer counter_layer_4;
+
     @Column(name = "is_active", nullable = false)
     private Boolean isActive;
 
@@ -98,6 +101,14 @@ public class TopicLayer2 {
 
     public void setFe_menu_color(String fe_menu_color) {
         this.fe_menu_color = fe_menu_color;
+    }
+
+    public Integer getCounter_layer_4() {
+        return counter_layer_4;
+    }
+
+    public void setCounter_layer_4(Integer counter_layer_4) {
+        this.counter_layer_4 = counter_layer_4;
     }
 
     public Boolean getActive() {

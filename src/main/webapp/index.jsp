@@ -120,7 +120,7 @@
                       <div class="inner">
                         <h6>${topicsLayer2ListActiveLoop.getName()}</h6>
 
-                        <h3>${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}</h3>
+                        <h3>${topicsLayer2ListActiveLoop.getCounter_layer_4()}</h3>
                       </div>
                       <div class="icon">
                         <i class="ion ${topicsLayer2ListActiveLoop.getFe_menu_icon()}"></i>
