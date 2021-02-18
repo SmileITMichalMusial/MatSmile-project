@@ -3,11 +3,10 @@
 <% request.getSession().getAttribute("topicsLayer1ListActive"); %>
 <% request.getSession().getAttribute("topicsLayer2ListActive"); %>
 <% request.getSession().getAttribute("topicsLayer3ListActive"); %>
-<% request.getSession().getAttribute("topicsLayer4ListActive"); %>
+<% request.getSession().getAttribute("topicLayer4ListActiveWithoutContent"); %>
 <% request.getSession().getAttribute("userType"); %>
 <c:set var="login" scope="session" value="${login}"/>
 
-<% request.getSession().getAttribute("topicsLayer4ListActive"); %>
 <% request.getSession().getAttribute("topicLayer1"); %>
 <% request.getSession().getAttribute("topicLayer2"); %>
 <% request.getSession().getAttribute("topicLayer3"); %>
@@ -165,7 +164,7 @@
                     <div class="inner">
                       <h6>${topicsLayer3ListActiveLoop.getName()}</h6>
 
-                      <h3>${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicsLayer3ListActiveLoop.getIdLayer3())).count()}</h3>
+                      <h3>${topicLayer4ListActiveWithoutContent.stream().filter(l -> l.getFkIdLayer3().equals(topicsLayer3ListActiveLoop.getIdLayer3())).count()}</h3>
 
 
                     </div>
