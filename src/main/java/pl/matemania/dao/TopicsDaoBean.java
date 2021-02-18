@@ -2,10 +2,7 @@ package pl.matemania.dao;
 
 import pl.matemania.Utils.Dates;
 import pl.matemania.domain.User;
-import pl.matemania.domain.topics.TopicLayer1;
-import pl.matemania.domain.topics.TopicLayer2;
-import pl.matemania.domain.topics.TopicLayer3;
-import pl.matemania.domain.topics.TopicLayer4;
+import pl.matemania.domain.topics.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -403,6 +400,23 @@ public class TopicsDaoBean implements TopicsDao {
 
         return topicLayer4ListActive;
     }
+
+    @Override
+    public List<TopicLayer4WithoutContent> getTopicLayer4FromDbActiveWithoutContentSortedByOrderId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer4WithoutContent> topicLayer4ListActiveWithoutContent = entityManager.createQuery("FROM TopicLayer4WithoutContent ").getResultList();
+        topicLayer4ListActiveWithoutContent = topicLayer4ListActiveWithoutContent
+                .stream()
+                .filter(p -> p.getActive())
+                .sorted(Comparator.comparing(TopicLayer4WithoutContent::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer4ListActiveWithoutContent;
+    }
+
+
 
     @Override
     public void modifyTopicLayer1Db(TopicLayer1 topicLayer1) {

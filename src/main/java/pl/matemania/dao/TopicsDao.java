@@ -1,10 +1,7 @@
 package pl.matemania.dao;
 
 import pl.matemania.domain.User;
-import pl.matemania.domain.topics.TopicLayer1;
-import pl.matemania.domain.topics.TopicLayer2;
-import pl.matemania.domain.topics.TopicLayer3;
-import pl.matemania.domain.topics.TopicLayer4;
+import pl.matemania.domain.topics.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +34,8 @@ public interface TopicsDao {
     List<TopicLayer2> getTopicLayer2FromDbActiveSortedByOrderId();
     List<TopicLayer3> getTopicLayer3FromDbActiveSortedByOrderId();
     List<TopicLayer4> getTopicLayer4FromDbActiveSortedByOrderId();
+
+    List<TopicLayer4WithoutContent> getTopicLayer4FromDbActiveWithoutContentSortedByOrderId();
 
     void modifyTopicLayer1Db(TopicLayer1 topicLayer1);
     void modifyTopicLayer2Db(TopicLayer2 topicLayer2);

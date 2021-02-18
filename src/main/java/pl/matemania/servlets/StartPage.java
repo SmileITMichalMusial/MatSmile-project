@@ -1,10 +1,7 @@
 package pl.matemania.servlets;
 
 import pl.matemania.dao.TopicsDao;
-import pl.matemania.domain.topics.TopicLayer1;
-import pl.matemania.domain.topics.TopicLayer2;
-import pl.matemania.domain.topics.TopicLayer3;
-import pl.matemania.domain.topics.TopicLayer4;
+import pl.matemania.domain.topics.*;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -40,6 +37,7 @@ public class StartPage extends HttpServlet {
         List<TopicLayer2> topicsLayer2ListActive = topicsDao.getTopicLayer2FromDbActiveSortedByOrderId();
         List<TopicLayer3> topicsLayer3ListActive = topicsDao.getTopicLayer3FromDbActiveSortedByOrderId();
         List<TopicLayer4> topicsLayer4ListActive = topicsDao.getTopicLayer4FromDbActiveSortedByOrderId();
+        List<TopicLayer4WithoutContent> topicLayer4ListActiveWithoutContent = topicsDao.getTopicLayer4FromDbActiveWithoutContentSortedByOrderId();
 
 
 
@@ -52,6 +50,7 @@ public class StartPage extends HttpServlet {
         request.getSession().setAttribute("topicsLayer2ListActive", topicsLayer2ListActive);
         request.getSession().setAttribute("topicsLayer3ListActive", topicsLayer3ListActive);
         request.getSession().setAttribute("topicsLayer4ListActive", topicsLayer4ListActive);
+        request.getSession().setAttribute("topicLayer4ListActiveWithoutContent", topicLayer4ListActiveWithoutContent);
 
 
 
