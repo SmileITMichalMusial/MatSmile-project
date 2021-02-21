@@ -35,6 +35,8 @@ public interface TopicsDao {
     List<TopicLayer3> getTopicLayer3FromDbActiveSortedByOrderId();
     List<TopicLayer4> getTopicLayer4FromDbActiveSortedByOrderId();
 
+    List<TopicLayer4> getTopicLayer4GroupForTopicLayer3Id(int fk_id_layer_3);
+    List<TopicLayer4WithoutContent> getTopicLayer4FromDbWithoutContentSortedByOrderId();
     List<TopicLayer4WithoutContent> getTopicLayer4FromDbActiveWithoutContentSortedByOrderId();
 
     void modifyTopicLayer1Db(TopicLayer1 topicLayer1);

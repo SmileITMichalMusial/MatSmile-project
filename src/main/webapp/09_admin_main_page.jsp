@@ -9,8 +9,8 @@
 <% request.getSession().getAttribute("topicsLayer1List"); %>
 <% request.getSession().getAttribute("topicsLayer2List"); %>
 <% request.getSession().getAttribute("topicsLayer3List"); %>
-<% request.getSession().getAttribute("topicsLayer4List"); %>
-<% request.getSession().getAttribute("topicsLayer4ListActive"); %>
+<% request.getSession().getAttribute("topicsLayer4ListWithoutContent"); %>
+<% request.getSession().getAttribute("topicsLayer4ListActiveWithoutContent"); %>
 <c:set var="login" scope="session" value="${login}"/>
 
 
@@ -168,7 +168,7 @@
                     <div class="form-group">
                       <label>Warstwa 4</label>
                       <select class="form-control">
-                        <c:forEach items="${topicsLayer4List}" var="topicLayer4Loop" varStatus="theCount">
+                        <c:forEach items="${topicsLayer4ListWithoutContent}" var="topicLayer4Loop" varStatus="theCount">
                           <option>${topicLayer4Loop.getName()}</option>
                         </c:forEach>
                       </select>

@@ -6,6 +6,7 @@
 <% request.getSession().getAttribute("topicLayer1"); %>
 <% request.getSession().getAttribute("topicLayer2"); %>
 <% request.getSession().getAttribute("topicLayer3"); %>
+<% request.getSession().getAttribute("topicLayer4GroupToDisplay"); %>
 <% request.getSession().getAttribute("nextTopicLayer3"); %>
 <% request.getSession().getAttribute("previousTopicLayer3"); %>
 <c:set var="login" scope="session" value="${login}"/>
@@ -115,20 +116,20 @@
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
               <!-- ten stream filtruje tylko te elementy z warstwy 4 ktore sa przypisane do warstwy 3 ktora przyszła jako parametr-->
               <c:forEach
-                items="${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicLayer3.getIdLayer3())).toList()}"
-                var="topicsLayer4ListActiveLoop" varStatus="theCount">
+                items="${topicLayer4GroupToDisplay}"
+                var="topicLayer4GroupToDisplayLoop" varStatus="theCount">
 
                 <c:if test="${theCount.count == 1}">
                   <a class="nav-link active" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
                      href="#vert-tabs-home-${theCount.count}"
                      role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                     aria-selected="true">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
+                     aria-selected="true">${theCount.count}. ${topicLayer4GroupToDisplayLoop.getName()}</a>
                 </c:if>
                 <c:if test="${theCount.count != 1}">
                   <a class="nav-link" id="vert-tabs-home-tab-${theCount.count}" data-toggle="pill"
                      href="#vert-tabs-home-${theCount.count}"
                      role="tab" aria-controls="vert-tabs-home-${theCount.count}"
-                     aria-selected="false">${theCount.count}. ${topicsLayer4ListActiveLoop.getName()}</a>
+                     aria-selected="false">${theCount.count}. ${topicLayer4GroupToDisplayLoop.getName()}</a>
                 </c:if>
 
 
@@ -138,18 +139,18 @@
           <div class="col-10 col-sm-10">
             <div class="tab-content" id="vert-tabs-tabContent">
               <c:forEach
-                items="${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicLayer3.getIdLayer3())).toList()}"
-                var="topicsLayer4ListActiveLoop" varStatus="theCount2">
+                items="${topicLayer4GroupToDisplay}"
+                var="topicLayer4GroupToDisplayLoop" varStatus="theCount2">
 
                 <c:if test="${theCount2.count == 1}">
                   <div class="tab-pane text-left fade show active" id="vert-tabs-home-${theCount2.count}"
                        role="tabpanel"
-                       aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
+                       aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4GroupToDisplayLoop.getContent()}
                   </div>
                 </c:if>
                 <c:if test="${theCount2.count != 1}">
                   <div class="tab-pane fade" id="vert-tabs-home-${theCount2.count}" role="tabpanel"
-                       aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicsLayer4ListActiveLoop.getContent()}
+                       aria-labelledby="vert-tabs-home-tab-${theCount2.count}"> ${topicLayer4GroupToDisplayLoop.getContent()}
                   </div>
                 </c:if>
 

@@ -4,10 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.matemania.Utils.Dates;
 import pl.matemania.dao.TopicsDao;
-import pl.matemania.domain.topics.TopicLayer1;
-import pl.matemania.domain.topics.TopicLayer2;
-import pl.matemania.domain.topics.TopicLayer3;
-import pl.matemania.domain.topics.TopicLayer4;
+import pl.matemania.domain.topics.*;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -212,10 +209,10 @@ class TopicsAddServlet extends HttpServlet {
             );
 
             req.getSession().setAttribute("topic_modification_action", null);
-            List<TopicLayer4> topicsLayer4List = topicsDao.getTopicLayer4FromDbSortedByOrderId();
-            List<TopicLayer4> topicsLayer4ListActive = topicsDao.getTopicLayer4FromDbActiveSortedByOrderId();
-            req.getSession().setAttribute("topicsLayer4List", topicsLayer4List);
-            req.getSession().setAttribute("topicsLayer4ListActive", topicsLayer4ListActive);
+            List<TopicLayer4WithoutContent> topicsLayer4ListWithoutContent = topicsDao.getTopicLayer4FromDbWithoutContentSortedByOrderId();
+            List<TopicLayer4WithoutContent> topicsLayer4ListActiveWithoutContent = topicsDao.getTopicLayer4FromDbActiveWithoutContentSortedByOrderId();
+            req.getSession().setAttribute("topicsLayer4ListWithoutContent", topicsLayer4ListWithoutContent);
+            req.getSession().setAttribute("topicsLayer4ListActiveWithoutContent",topicsLayer4ListActiveWithoutContent);
 
         }
 

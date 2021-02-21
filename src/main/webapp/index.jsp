@@ -3,7 +3,8 @@
 <% request.getSession().getAttribute("topicsLayer1ListActive"); %>
 <% request.getSession().getAttribute("topicsLayer2ListActive"); %>
 <% request.getSession().getAttribute("topicsLayer3ListActive"); %>
-<% request.getSession().getAttribute("topicLayer4ListActiveWithoutContent"); %>
+<% request.getSession().getAttribute("topicsLayer4ListWithoutContent"); %>
+<% request.getSession().getAttribute("topicsLayer4ListActiveWithoutContent"); %>
 <% request.getSession().getAttribute("userType"); %>
 <c:set var="login" scope="session" value="${login}"/>
 

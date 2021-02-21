@@ -80,7 +80,7 @@
                       <p>${loop.count}. ${topicsLayer3ListActiveLoop.getName()}
                         <i class="right fas fa-angle-right"></i>
                         <span
-                          class="badge badge-info right">${topicsLayer4ListActive.stream().filter(l -> l.getFkIdLayer3().equals(topicsLayer3ListActiveLoop.getIdLayer3())).count()}</span>
+                          class="badge badge-info right">${topicsLayer4ListActiveWithoutContent.stream().filter(l -> l.getFkIdLayer3().equals(topicsLayer3ListActiveLoop.getIdLayer3())).count()}</span>
 
                       </p>
                     </a>
