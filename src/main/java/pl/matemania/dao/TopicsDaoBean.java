@@ -51,16 +51,16 @@ public class TopicsDaoBean implements TopicsDao {
      * posiada kolejny numer order_id dla powiązanej z nim warstwy drugiej (identyfikowanej przez fkIdLayer2)
      * Metoda ma dwa parametry wejściowe: orderIdLayer3 - order_id dla warstwy trzeciej i fkIdLayer2 - klucz obcy
      * identyfikujący warstwę drugą
-     *
+     * <p>
      * Na początku metody sprawdzamy czy istnieje kolejny order_id dla danego orderid warstwy trzeciej i powiązanej z nim warstwy drugiej
      * Jeśli nie ustnieje to zwrata obiekt TopicLayer3 jako null, jesli istnieje to wyszukuje TopicLayer3 z kolejnym order_id
-     *
+     * <p>
      * get(0) nigdy nie zwróci błędu gdyż albo istnieje kolejny (sprawdzoen przez nextExists) albo jest to null
      * Para fkIdLayer2 i orderIdLayer3 jest unikalna na bazie danych (klucz unique_orderid_layer_3)
      *
-     * @param  orderIdLayer3  order_id warstwy trzeciej
-     * @param  fkIdLayer2 identyfikator warstwy drugiej
-     * @return      obiekt TopicLayer3 albo null (jesli nie istnieje kolejny)
+     * @param orderIdLayer3 order_id warstwy trzeciej
+     * @param fkIdLayer2    identyfikator warstwy drugiej
+     * @return obiekt TopicLayer3 albo null (jesli nie istnieje kolejny)
      */
 
 
@@ -78,7 +78,7 @@ public class TopicsDaoBean implements TopicsDao {
         } else {
             topicLayer3 = topicLayer3List
                     .stream()
-                    .filter(d -> d.getFkIdLayer2().equals(fkIdLayer2) && d.getOrderId() > orderIdLayer3 )
+                    .filter(d -> d.getFkIdLayer2().equals(fkIdLayer2) && d.getOrderId() > orderIdLayer3)
                     .sorted(Comparator.comparing(TopicLayer3::getOrderId))
                     .collect(Collectors.toList())
                     .get(0);
@@ -93,16 +93,16 @@ public class TopicsDaoBean implements TopicsDao {
      * posiada poprzedni numer order_id dla powiązanej z nim warstwy drugiej (identyfikowanej przez fkIdLayer2)
      * Metoda ma dwa parametry wejściowe: orderIdLayer3 - order_id dla warstwy trzeciej i fkIdLayer2 - klucz obcy
      * identyfikujący warstwę drugą
-     *
+     * <p>
      * Na początku metody sprawdzamy czy istnieje poprzedni order_id dla danego orderid warstwy trzeciej i powiązanej z nim warstwy drugiej
      * Jeśli nie ustnieje to zwrata obiekt TopicLayer3 jako null, jesli istnieje to wyszukuje TopicLayer3 z kolejnym order_id
-     *
+     * <p>
      * get(0) nigdy nie zwróci błędu gdyż albo istnieje poprzedni (sprawdzoen przez nextExists) albo jest to null
      * Para fkIdLayer2 i orderIdLayer3 jest unikalna na bazie danych (klucz unique_orderid_layer_3)
      *
-     * @param  orderIdLayer3  order_id warstwy trzeciej
-     * @param  fkIdLayer2 identyfikator warstwy drugiej
-     * @return      obiekt TopicLayer3 albo null (jesli nie istnieje poprzedni)
+     * @param orderIdLayer3 order_id warstwy trzeciej
+     * @param fkIdLayer2    identyfikator warstwy drugiej
+     * @return obiekt TopicLayer3 albo null (jesli nie istnieje poprzedni)
      */
 
     @Override
@@ -124,8 +124,6 @@ public class TopicsDaoBean implements TopicsDao {
                     .collect(Collectors.toList())
                     .get(0);
         }
-
-
 
 
         return topicLayer3;
@@ -401,6 +399,34 @@ public class TopicsDaoBean implements TopicsDao {
         return topicLayer4ListActive;
     }
 
+
+    /**
+     * Metoda  getTopicLayer4GroupForTopicLayer3Id pobiera całą grupę warstwy 4 wraz z zawartoscia do wyswietlenia na steonie.
+     * Jest to jedyne miejsce gdzie pobieramy kontent warstwy 4
+     * Wybiera tylko aktywne, sortuje po orderId
+     *
+     * @param fk_id_layer_3 fk_id_layer_3 z tabeli topic_layer_3 (klasa TopicLayer3, identyfikaotr warstwy 3
+     * @return obiekt Lista TopicLayer4 dla danego fk_id_layer_3
+     */
+
+
+    @Override
+    public List<TopicLayer4> getTopicLayer4GroupForTopicLayer3Id(int fk_id_layer_3) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer4> topicLayer4GroupForTopicLayer3Id = entityManager.createQuery("FROM TopicLayer4 ").getResultList();
+        topicLayer4GroupForTopicLayer3Id = topicLayer4GroupForTopicLayer3Id
+                .stream()
+                .filter(p -> p.getActive())
+                .filter(l -> l.getFkIdLayer3().equals(fk_id_layer_3))
+                .sorted(Comparator.comparing(TopicLayer4::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer4GroupForTopicLayer3Id;
+    }
+
+
     @Override
     public List<TopicLayer4WithoutContent> getTopicLayer4FromDbActiveWithoutContentSortedByOrderId() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -416,6 +442,19 @@ public class TopicsDaoBean implements TopicsDao {
         return topicLayer4ListActiveWithoutContent;
     }
 
+    @Override
+    public List<TopicLayer4WithoutContent> getTopicLayer4FromDbWithoutContentSortedByOrderId() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        List<TopicLayer4WithoutContent> topicLayer4ListActiveWithoutContent = entityManager.createQuery("FROM TopicLayer4WithoutContent ").getResultList();
+        topicLayer4ListActiveWithoutContent = topicLayer4ListActiveWithoutContent
+                .stream()
+                .sorted(Comparator.comparing(TopicLayer4WithoutContent::getOrderId))
+                .collect(Collectors.toList());
+
+        return topicLayer4ListActiveWithoutContent;
+    }
 
 
     @Override
@@ -505,8 +544,6 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .anyMatch(t -> t.getFkIdLayer1().equals(id_layer_1));
     }
-
-
 
 
 }

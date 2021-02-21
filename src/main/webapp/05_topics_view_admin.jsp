@@ -5,7 +5,7 @@
 <% request.getSession().getAttribute("topicsLayer1List"); %>
 <% request.getSession().getAttribute("topicsLayer2List"); %>
 <% request.getSession().getAttribute("topicsLayer3List"); %>
-<% request.getSession().getAttribute("topicsLayer4List"); %>
+<% request.getSession().getAttribute("topicsLayer4ListWithoutContent"); %>
 
 
 <section class="content">
@@ -238,7 +238,7 @@
                               ${topicsLayer3ListLoop.getName()}
                             <!-- sprawdzenie czy rekord warstwy trzy   ma rekord-dziecko w warstwie 4. Jeśli nie ma to przycisk aby dodać -->
                             <c:if
-                              test="${!topicsLayer4List.stream().anyMatch(l -> l.getFkIdLayer3().equals(topicsLayer3ListLoop.getIdLayer3()))}">
+                              test="${!topicsLayer4ListWithoutContent.stream().anyMatch(l -> l.getFkIdLayer3().equals(topicsLayer3ListLoop.getIdLayer3()))}">
                               <a
                                 href="TopicsAddServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=4"><em
                                 class="fa fa-plus-square"></em></a>
@@ -250,7 +250,7 @@
                           ${topicsLayer3ListLoop.getName()}
                           <!-- sprawdzenie czy rekord warstwy trzy ma rekord-dziecko w warstwie 4. Jeśli nie ma to przycisk aby dodać -->
                           <c:if
-                            test="${!topicsLayer4List.stream().anyMatch(l -> l.getFkIdLayer3().equals(topicsLayer3ListLoop.getIdLayer3()))}">
+                            test="${!topicsLayer4ListWithoutContent.stream().anyMatch(l -> l.getFkIdLayer3().equals(topicsLayer3ListLoop.getIdLayer3()))}">
                             <a
                               href="TopicsAddServlet?unique_topic_record_id=${topicsLayer3ListLoop.getIdLayer3()}&layer_number=4"><em
                               class="fa fa-plus-square"></em></a>
@@ -291,7 +291,7 @@
                     </tr>
                   </c:if>
 
-                  <c:forEach items="${topicsLayer4List}" var="topicsLayer4ListLoop">
+                  <c:forEach items="${topicsLayer4ListWithoutContent}" var="topicsLayer4ListLoop">
                     <c:if
                       test="${topicsLayer1ListLoop.getIdLayer1() == topicsLayer2ListLoop.getFkIdLayer1() && topicsLayer2ListLoop.getIdLayer2() == topicsLayer3ListLoop.getFkIdLayer2() && topicsLayer3ListLoop.getIdLayer3() == topicsLayer4ListLoop.getFkIdLayer3()}">
                       <tr>

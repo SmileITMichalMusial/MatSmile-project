@@ -140,3 +140,7 @@ ${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLay
 <% request.getAttribute("topicsLayer2List"); %>
 <% request.getAttribute("topicsLayer3List"); %>
 <% request.getAttribute("topicsLayer4List"); %>
+
+
+topicsLayer4List -> topicsLayer4ListWithoutContent
+topicsLayer4ListActive -> topicsLayer4ListActiveWithoutContent
