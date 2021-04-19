@@ -144,3 +144,8 @@ ${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLay
 
 topicsLayer4List -> topicsLayer4ListWithoutContent
 topicsLayer4ListActive -> topicsLayer4ListActiveWithoutContent
+
+summernote obrazki
+https://amedpal.com/blog/save-images-to-server-summernote.html
+
+uploadsPath=d:\\michal\\java\\git\\MatSmile-project\\src\\main\\webapp\\graphics\\
