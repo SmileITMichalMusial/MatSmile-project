@@ -81,12 +81,12 @@
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link active" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages"
                  role="tab"
-                 aria-controls="vert-tabs-messages" aria-selected="true">Edycja menu strony</a>
+                 aria-controls="vert-tabs-messages" aria-selected="true">Menu i zawartość</a>
               <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile"
                  role="tab"
                  aria-controls="vert-tabs-profile" aria-selected="false">Zarządzanie użytkownikami</a>
               <a class="nav-link" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab"
-                 aria-controls="vert-tabs-home" aria-selected="false">Edytuj wpis</a>
+                 aria-controls="vert-tabs-home" aria-selected="false">Grafika</a>
             </div>
           </div>
 
@@ -129,53 +129,7 @@
               <div class="tab-pane fade" id="vert-tabs-home" role="tabpanel"
                    aria-labelledby="vert-tabs-home-tab">
 
-                <div class="row">
-                  <div class="col-sm-3">
-                    <!-- select -->
-                    <div class="form-group">
-                      <label>Warstwa 1</label>
-                      <select class="form-control">
-                        <c:forEach items="${topicsLayer1List}" var="topicLayer1Loop" varStatus="theCount">
-                          <option>${topicLayer1Loop.getName()}</option>
-                        </c:forEach>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <!-- select -->
-                    <div class="form-group">
-                      <label>Warstwa 2</label>
-                      <select class="form-control">
-                        <c:forEach items="${topicsLayer2List}" var="topicLayer2Loop" varStatus="theCount">
-                          <option>${topicLayer2Loop.getName()}</option>
-                        </c:forEach>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <!-- select -->
-                    <div class="form-group">
-                      <label>Warstwa 3</label>
-                      <select class="form-control">
-                        <c:forEach items="${topicsLayer3List}" var="topicLayer3Loop" varStatus="theCount">
-                          <option>${topicLayer3Loop.getName()}</option>
-                        </c:forEach>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <!-- select -->
-                    <div class="form-group">
-                      <label>Warstwa 4</label>
-                      <select class="form-control">
-                        <c:forEach items="${topicsLayer4ListWithoutContent}" var="topicLayer4Loop" varStatus="theCount">
-                          <option>${topicLayer4Loop.getName()}</option>
-                        </c:forEach>
-                      </select>
-                    </div>
-                  </div>
-                  <%@include file="09_01_editors_form.jsp" %>
-                </div>
+                <%@include file="06_graphics_admin.jsp" %>
 
 
               </div>
@@ -245,6 +199,12 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
+
+
+
+
+
 <!-- Summernote -->
 <script>
   $(function () {
@@ -271,6 +231,7 @@
       ['insert', ['link', 'picture', 'video','hr']],
       ['view', ['fullscreen', 'codeview', 'help']]
     ],
+
     focus: true
 
 
@@ -278,5 +239,7 @@
 
 
 </script>
+
+
 </body>
 </html>
