@@ -6,6 +6,10 @@ Address: http://localhost:9990/
 login: michal
 pass: Li..1
 
+Deployment: plik .war jest w katalogu: d:\michal\java\git\MatSmile-project\target\
+
+matsmile-1.0-SNAPSHOT.war
+
 ---------- rownania matematyczne: ------
 1) napisac na stonie
 https://latex.codecogs.com/legacy/eqneditor/editor.php
@@ -149,3 +153,36 @@ summernote obrazki
 https://amedpal.com/blog/save-images-to-server-summernote.html
 
 uploadsPath=d:\\michal\\java\\git\\MatSmile-project\\src\\main\\webapp\\graphics\\
+
+
+Baza danych odświeżanie
+
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet successfully received from the server was 40 794 850 milliseconds ago.  The last packet sent successfully to the server was 40 794 860 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:172)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2261)
+	at org.hibernate.engine.jdbc.connections.internal.PooledConnections.poll(PooledConnections.java:76)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.getConnection(DriverManagerConnectionProviderImpl.java:187)
+	at org.hibernate.internal.AbstractSessionImpl$NonContextualJdbcConnectionAccess.obtainConnection(AbstractSessionImpl.java:386)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:84)
+	... 141 more
+
+	sumemrnote - przyciski sa opisane i edytowalne w pliku 09_admin_main_page
+
+	edytor równań:
+	spacja \quad
+    enter \\
+
+
+Połączenie z baza danych:
+resources / META-INF/persistance.xml
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://s53.hekko.net.pl:3306/musialm_matemania?serverTimezone=UTC"/>
+
+            <property name="hibernate.connection.username" value="musialm_matemania"/>
+            <property name="hibernate.connection.password" value="matemania123"/>
+
+            baza nowa
+            node79705-matemaniatest.unicloud.pl
+            user: musialm_matemania
+            hasło: matemania123
