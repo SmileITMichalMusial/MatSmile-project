@@ -1,0 +1,19 @@
+\frac{1}{3}= 0,33333... = 0,(3)\\\\
+\quad\quad\frac{2}{3}= 0,66666... = 0,(6)\\
+
+\\
+0,(56) = x\quad\quad\quad\quad\quad\quad|\quad*100\quad(mnozymy\quad obustronnie\quad przez\quad100)\\
+0,(56)*100=100x\\
+56,(56)=100x\\
+56+0,(56)=100x\quad\quad|\quad wykorzystujemy\quad podstawienie\quad 0,(56)=x\\
+56+x=100x
+56=99x\\
+x=\frac{56}{99}
+
+a^{n}=a*a*a*...*a
+a^{-n}=\frac{1}{a^{n}}
+
+a^{\frac{n}{m}}=\sqrt[m]{a^{n}}
+2^{\frac{3}{4}}=\sqrt[4]{2^{3}}=\sqrt[4]{8}
+a^{n}:a^{m}=a^{n-m}
+
