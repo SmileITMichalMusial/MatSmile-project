@@ -221,12 +221,12 @@
     toolbar: [
       // [groupName, [list of button]]
       ['style', ['style']],
-      ['font', ['bold', 'underline', 'strikethrough','clear']],
+      ['font', ['bold', 'underline', 'italic','strikethrough','clear','paragraph']],
       ['fontname', ['fontname']],
       ['fontsize', ['fontsize']],
+      ['fontsizeunit', ['fontsizeunit']],
       ['color', ['color']],
-      ['math', ['math']],
-      ['para', ['ul', 'ol', 'paragraph']],
+      ['para', ['ul', 'ol']],
       ['table', ['table']],
       ['insert', ['link', 'picture', 'video','hr']],
       ['view', ['fullscreen', 'codeview', 'help']]

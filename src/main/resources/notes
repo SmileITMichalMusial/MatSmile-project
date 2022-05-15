@@ -167,7 +167,7 @@ Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet
 	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:84)
 	... 141 more
 
-	sumemrnote - przyciski sa opisane i edytowalne w pliku 09_admin_main_page
+	summernote - przyciski sa opisane i edytowalne w pliku 09_admin_main_page
 
 	edytor równań:
 	spacja \quad
@@ -175,12 +175,26 @@ Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet
 
 
 Połączenie z baza danych:
+
+Baza Hekko:
+
 resources / META-INF/persistance.xml
+
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://s53.hekko.net.pl:3306/musialm_matemania?serverTimezone=UTC"/>
 
             <property name="hibernate.connection.username" value="musialm_matemania"/>
             <property name="hibernate.connection.password" value="matemania123"/>
+
+
+Baza UniCloud:
+
+ <property name="hibernate.connection.url"
+                      value="jdbc:mysql://node79707-matemaniatest.unicloud.pl/musialm_matemania?serverTimezone=UTC"/>
+
+            <property name="hibernate.connection.username" value="musialm_matemania"/>
+            <property name="hibernate.connection.password" value="matemania123"/>
+
 
             baza nowa
             node79705-matemaniatest.unicloud.pl
