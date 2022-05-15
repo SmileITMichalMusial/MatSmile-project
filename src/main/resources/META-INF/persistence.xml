@@ -20,8 +20,8 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <!-- <property name="hibernate.connection.url" value="jdbc:mysql://sql.agnieszkadwa.nazwa.pl:3306/agnieszkadwa_poradniausmiech?serverTimezone=UTC" /> -->
             <property name="hibernate.connection.url"
-                      value="jdbc:mysql://node79707-matemaniatest.unicloud.pl/musialm_matemania?serverTimezone=UTC"/>
-
+                      value="jdbc:mysql://s170.cyber-folks.pl:3306/musialm_matemania?serverTimezone=UTC"/>
+            
             <property name="hibernate.connection.username" value="musialm_matemania"/>
             <property name="hibernate.connection.password" value="matemania123"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
