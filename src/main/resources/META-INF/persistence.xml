@@ -19,11 +19,20 @@
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <!-- <property name="hibernate.connection.url" value="jdbc:mysql://sql.agnieszkadwa.nazwa.pl:3306/agnieszkadwa_poradniausmiech?serverTimezone=UTC" /> -->
+            <!--
+            Połącznie do hekko (te trzy wpisy)
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://s170.cyber-folks.pl:3306/musialm_matemania?serverTimezone=UTC"/>
             
             <property name="hibernate.connection.username" value="musialm_matemania"/>
-            <property name="hibernate.connection.password" value="matemania123"/>
+            <property name="hibernate.connection.password" value="matemania123"/> -->
+
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/matemania?serverTimezone=UTC"/>
+
+            <property name="hibernate.connection.username" value="musialm"/>
+            <property name="hibernate.connection.password" value="Liroyek1"/>
+
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="show_sql" value="true"/>

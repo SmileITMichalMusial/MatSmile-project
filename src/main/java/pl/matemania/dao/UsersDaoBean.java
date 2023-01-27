@@ -24,7 +24,7 @@ public class UsersDaoBean implements UsersDao {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
         List<User> userList = entityManager.createQuery("FROM User ").getResultList();
-
+        entityManager.close();
         return userList;
     }
 
@@ -41,7 +41,7 @@ public class UsersDaoBean implements UsersDao {
                         .thenComparing(User::getUserType)
                         .thenComparing(User::getId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return userList;
     }
 
@@ -49,6 +49,7 @@ public class UsersDaoBean implements UsersDao {
     public User read(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         User user = entityManager.find(User.class, id);
+        entityManager.close();
         return user;
     }
 

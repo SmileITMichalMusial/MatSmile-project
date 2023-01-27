@@ -1,0 +1,137 @@
+-- to działa żeby zaktualizowac topic_layer_2
+update topic_layer_2 t2_master,
+    (select t2.id_layer_2 as layer2id, count(*) l4_counter
+    from topic_layer_4 t4,
+    topic_layer_3 t3,
+    topic_layer_2 t2
+    where t2.id_layer_2 = t3.fk_id_layer_2
+    and t4.fk_id_layer_3 = t3.id_layer_3
+    and t4.is_active = 1
+    and t3.is_active = 1
+    group by t2.id_layer_2) as counter_to_update
+set t2_master.counter_layer_4 = counter_to_update.l4_counter
+where t2_master.id_layer_2 = counter_to_update.layer2id;
+
+
+
+
+create trigger after_update_topic_layer_4
+    after update
+    on topic_layer_4
+    for each row
+begin
+    update topic_layer_2 t2_master,
+        (select t2.id_layer_2 as layer2id, count(*) l4_counter
+        from topic_layer_4 t4,
+        topic_layer_3 t3,
+        topic_layer_2 t2
+        where t2.id_layer_2 = t3.fk_id_layer_2
+        and t4.fk_id_layer_3 = t3.id_layer_3
+        and t4.is_active = 1
+        and t3.is_active = 1
+        group by t2.id_layer_2) as counter_to_update
+    set t2_master.counter_layer_4 = counter_to_update.l4_counter
+    where t2_master.id_layer_2 = counter_to_update.layer2id;
+    update topic_layer_2 set counter_layer_4 = 0 where counter_layer_4 is null;
+end;
+
+create trigger after_insert_topic_layer_4
+    after insert
+    on topic_layer_4
+    for each row
+begin
+    update topic_layer_2 t2_master,
+        (select t2.id_layer_2 as layer2id, count(*) l4_counter
+        from topic_layer_4 t4,
+        topic_layer_3 t3,
+        topic_layer_2 t2
+        where t2.id_layer_2 = t3.fk_id_layer_2
+        and t4.fk_id_layer_3 = t3.id_layer_3
+        and t4.is_active = 1
+        and t3.is_active = 1
+        group by t2.id_layer_2) as counter_to_update
+    set t2_master.counter_layer_4 = counter_to_update.l4_counter
+    where t2_master.id_layer_2 = counter_to_update.layer2id;
+    update topic_layer_2 set counter_layer_4 = 0 where counter_layer_4 is null;
+end;
+
+create trigger after_delete_topic_layer_4
+    after delete
+    on topic_layer_4
+    for each row
+begin
+    update topic_layer_2 t2_master,
+        (select t2.id_layer_2 as layer2id, count(*) l4_counter
+        from topic_layer_4 t4,
+        topic_layer_3 t3,
+        topic_layer_2 t2
+        where t2.id_layer_2 = t3.fk_id_layer_2
+        and t4.fk_id_layer_3 = t3.id_layer_3
+        and t4.is_active = 1
+        and t3.is_active = 1
+        group by t2.id_layer_2) as counter_to_update
+    set t2_master.counter_layer_4 = counter_to_update.l4_counter
+    where t2_master.id_layer_2 = counter_to_update.layer2id;
+    update topic_layer_2 set counter_layer_4 = 0 where counter_layer_4 is null;
+end;
+
+
+create trigger after_update_topic_layer_3
+    after update
+    on topic_layer_3
+    for each row
+begin
+    update topic_layer_2 t2_master,
+        (select t2.id_layer_2 as layer2id, count(*) l4_counter
+        from topic_layer_4 t4,
+        topic_layer_3 t3,
+        topic_layer_2 t2
+        where t2.id_layer_2 = t3.fk_id_layer_2
+        and t4.fk_id_layer_3 = t3.id_layer_3
+        and t4.is_active = 1
+        and t3.is_active = 1
+        group by t2.id_layer_2) as counter_to_update
+    set t2_master.counter_layer_4 = counter_to_update.l4_counter
+    where t2_master.id_layer_2 = counter_to_update.layer2id;
+    update topic_layer_2 set counter_layer_4 = 0 where counter_layer_4 is null;
+end;
+
+create trigger after_insert_topic_layer_3
+    after insert
+    on topic_layer_3
+    for each row
+begin
+    update topic_layer_2 t2_master,
+        (select t2.id_layer_2 as layer2id, count(*) l4_counter
+        from topic_layer_4 t4,
+        topic_layer_3 t3,
+        topic_layer_2 t2
+        where t2.id_layer_2 = t3.fk_id_layer_2
+        and t4.fk_id_layer_3 = t3.id_layer_3
+        and t4.is_active = 1
+        and t3.is_active = 1
+        group by t2.id_layer_2) as counter_to_update
+    set t2_master.counter_layer_4 = counter_to_update.l4_counter
+    where t2_master.id_layer_2 = counter_to_update.layer2id;
+    update topic_layer_2 set counter_layer_4 = 0 where counter_layer_4 is null;
+end;
+
+create trigger after_delete_topic_layer_3
+    after delete
+    on topic_layer_3
+    for each row
+begin
+    update topic_layer_2 t2_master,
+        (select t2.id_layer_2 as layer2id, count(*) l4_counter
+        from topic_layer_4 t4,
+        topic_layer_3 t3,
+        topic_layer_2 t2
+        where t2.id_layer_2 = t3.fk_id_layer_2
+        and t4.fk_id_layer_3 = t3.id_layer_3
+        and t4.is_active = 1
+        and t3.is_active = 1
+        group by t2.id_layer_2) as counter_to_update
+    set t2_master.counter_layer_4 = counter_to_update.l4_counter
+    where t2_master.id_layer_2 = counter_to_update.layer2id;
+    update topic_layer_2 set counter_layer_4 = 0 where counter_layer_4 is null;
+end;
