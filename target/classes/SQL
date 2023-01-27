@@ -1,0 +1,17 @@
+-- Select from each table
+select * from topic_layer_1 order by order_id
+select * from topic_layer_2 order by fk_id_layer_1, order_id
+select * from topic_layer_3 order by fk_id_layer_2, order_id
+select * from topic_layer_4 order by fk_id_layer_3, order_id
+
+-- Select from four tables
+select t1.id_layer_1, t2.id_layer_2, t1.name, t2.name, t3.name, t4.name, t4.content
+from topic_layer_1 t1, topic_layer_2 t2, topic_layer_3 t3, topic_layer_4 t4
+where t1.id_layer_1 = t2.fk_id_layer_1 and t2.id_layer_2 = t3.fk_id_layer_2 and t3.id_layer_3 = t4.fk_id_layer_3
+order by t1.order_id, t2.order_id, t3.order_id, t4.order_id;
+
+-- Select from three tables (last one may be empty)
+select t1.id_layer_1, t2.id_layer_2, t3.id_layer_3, t1.name, t2.name, t3.name
+from topic_layer_1 t1, topic_layer_2 t2, topic_layer_3 t3
+where t1.id_layer_1 = t2.fk_id_layer_1 and t2.id_layer_2 = t3.fk_id_layer_2
+order by t1.order_id, t2.order_id, t3.order_id;

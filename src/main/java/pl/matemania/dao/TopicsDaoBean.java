@@ -21,6 +21,7 @@ public class TopicsDaoBean implements TopicsDao {
     public TopicLayer1 getSingleTopicLayer1(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TopicLayer1 topicLayer1 = entityManager.find(TopicLayer1.class, id);
+        entityManager.close();
         return topicLayer1;
     }
 
@@ -28,6 +29,7 @@ public class TopicsDaoBean implements TopicsDao {
     public TopicLayer2 getSingleTopicLayer2(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TopicLayer2 topicLayer2 = entityManager.find(TopicLayer2.class, id);
+        entityManager.close();
         return topicLayer2;
     }
 
@@ -35,6 +37,7 @@ public class TopicsDaoBean implements TopicsDao {
     public TopicLayer3 getSingleTopicLayer3(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TopicLayer3 topicLayer3 = entityManager.find(TopicLayer3.class, id);
+        entityManager.close();
         return topicLayer3;
     }
 
@@ -42,6 +45,7 @@ public class TopicsDaoBean implements TopicsDao {
     public TopicLayer4 getSingleTopicLayer4(int id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TopicLayer4 topicLayer4 = entityManager.find(TopicLayer4.class, id);
+        entityManager.close();
         return topicLayer4;
     }
 
@@ -293,7 +297,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .sorted(Comparator.comparing(TopicLayer1::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer1List;
     }
 
@@ -307,7 +311,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .sorted(Comparator.comparing(TopicLayer2::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer2List;
     }
 
@@ -321,7 +325,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .sorted(Comparator.comparing(TopicLayer3::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer3List;
     }
 
@@ -335,7 +339,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .sorted(Comparator.comparing(TopicLayer4::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer4List;
     }
 
@@ -350,7 +354,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .filter(p -> p.getActive())
                 .sorted(Comparator.comparing(TopicLayer1::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer1ListActive;
     }
 
@@ -365,7 +369,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .filter(p -> p.getActive())
                 .sorted(Comparator.comparing(TopicLayer2::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer2ListActive;
     }
 
@@ -380,7 +384,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .filter(p -> p.getActive())
                 .sorted(Comparator.comparing(TopicLayer3::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer3ListActive;
     }
 
@@ -395,7 +399,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .filter(p -> p.getActive())
                 .sorted(Comparator.comparing(TopicLayer4::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer4ListActive;
     }
 
@@ -422,7 +426,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .filter(l -> l.getFkIdLayer3().equals(fk_id_layer_3))
                 .sorted(Comparator.comparing(TopicLayer4::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer4GroupForTopicLayer3Id;
     }
 
@@ -438,7 +442,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .filter(p -> p.getActive())
                 .sorted(Comparator.comparing(TopicLayer4WithoutContent::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer4ListActiveWithoutContent;
     }
 
@@ -452,7 +456,7 @@ public class TopicsDaoBean implements TopicsDao {
                 .stream()
                 .sorted(Comparator.comparing(TopicLayer4WithoutContent::getOrderId))
                 .collect(Collectors.toList());
-
+        entityManager.close();
         return topicLayer4ListActiveWithoutContent;
     }
 

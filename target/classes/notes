@@ -1,0 +1,202 @@
+notes
+
+Wildfly Admin console
+
+Address: http://localhost:9990/
+login: michal
+pass: Li..1
+
+Deployment: plik .war jest w katalogu: d:\michal\java\git\MatSmile-project\target\
+
+matsmile-1.0-SNAPSHOT.war
+
+---------- rownania matematyczne: ------
+1) napisac na stonie
+https://latex.codecogs.com/legacy/eqneditor/editor.php
+
+2) wkleic do
+https://www.codecogs.com/latex/eqneditor.php
+
+3) skopiowa opcje html, np:
+<img src="https://latex.codecogs.com/gif.latex?\frac{x^2}{2}&plus;\int&space;sin\alpha&space;d\alpha" title="\frac{x^2}{2}+\int sin\alpha d\alpha" />
+
+-- zwijanie menu ? --
+
+webapp/build/js/Treeview.js
+
+ORM mapping dodajemy pozniej do pliku persistance.xml
+
+
+-- -- kolory strony ----
+menu po lewej tło
+1. wywołanie jest w pliku 002_left_menu.jsp, w klasie navbar-blue. Klasa navbar-blue jest opisana w adminlte.css,
+a nadpisana w pliku styles_my.css ktory nadpisuje na moje potrzeby
+
+aby na jasno niebiesko jak akademia
+
+.navbar-blue {
+  background-color: #38B0DE;
+}
+
+2. <link rel="stylesheet" href="dist/css/styles_my.css"> musi byc dodane w kazdym pliku ktory buduje strone (  w odwołaniach juz nie) pod <link rel="stylesheet" href="dist/css/adminlte.min.css">
+Jest dodany w stronach:
+- 01_Layer_3_page.jsp
+- 09_admin_main_page.jsp
+- index.jsp
+- 01_L_login_page.jsp
+- 01_L_add_user_page.jsp
+
+3. Aby ustawić białą czcionkę dopisujemy: navbar-dark bg-lightblue
+4. Aby były ładne linki w ul dodajemy navbar-nav <ul class="nav nav-treeview navbar-nav"> i z klasy <u> usuwamy nav-pills
+
+menu-open - ustawia ze manu jest zawsze otwarte (rozwiniete)
+
+---- inne ---
+flex-column - ustawia elementy listy rozwijalnej ładnie jeden pod drugim
+nav-header - tutaj jest opisana czcionka i kolory warstwy 2,3  w menu po lewej
+nav-item - tutaj jest opisana czcionka i kolory warstwy 2 i 3 w menu po lewej
+nav-link tutaj jest opisana czcionka i kolory linków warstwy 2 i 3 w menu po lewej
+
+-------------------------ikony na stronie głównej
+
+<i class="ion ion-calculator"></i>
+
+dodajemy zamiast calculator słowo ze strony
+https://ionicons.com/
+
+
+--------------- temporary
+
+TheoryViewServlet?idLayer3=${topicsLayer3ListActiveLoop.getIdLayer3()}
+
+fe_main_page_icon
+fe_main_page_color
+
+
+--- tekst
+
+wysrodkowany:
+<h3 class="m-0 text-center text-sm-center">Matemania - Twój matematyczny przewodnik</h3>
+
+
+---- stare menu lewo prawo
+
+<div class="row">
+            <!--<i class="fas fa-edit"></i> -->
+            <div class="col-4 col-sm-4 float-left">
+
+              <c:if
+                test="${previousTopicLayer3.getName() != null && previousTopicLayer3.getActive()}">
+
+                <ol class="breadcrumb float-sm-left">
+                  <li class="breadcrumb-item active">
+
+                    <h6 class="small">Poprzedni temat: </h6></small><a
+                    href="TheoryViewServlet?idLayer3=${previousTopicLayer3.getIdLayer3()}">
+                      ${previousTopicLayer3.getName()} </a></li>
+                </ol>
+                </a>
+
+
+              </c:if>
+
+            </div>
+            <div class="col-4 col-sm-4">
+              <h6 class="small">Jesteś w dziale: </h6>${topicLayer1.getName()} / ${topicLayer2.getName()}
+              / ${topicLayer3.getName()}
+
+
+            </div>
+            <div class="col-4 col-sm-4 float-right">
+              <div class="float-right">
+
+
+                <c:if
+                  test="${nextTopicLayer3.getName() != null && nextTopicLayer3.getActive()}">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">
+                      <h6 class="small">Następny temat: </h6><a
+                      href="TheoryViewServlet?idLayer3=${nextTopicLayer3.getIdLayer3()}">
+                        ${nextTopicLayer3.getName()} </a>
+                  </ol>
+                  </a>
+
+                </c:if>
+              </div>
+            </div>
+
+          </div>
+
+
+--- jesli dodaję klasę  <div class="float-left"> to rozmiar przycisku dopasowuje sie do długości tekstu
+
+--- stream aby zliczyc ile jest warstwy trzeciej dla warstwy drugiej (usuniety po trigerach i dodaniu counter_layer_4 dla tabeli topic_layer_2
+
+${topicsLayer3ListActive.stream().filter(l -> l.getFkIdLayer2().equals(topicsLayer2ListActiveLoop.getIdLayer2())).count()}
+
+
+-- usuwanie topiclayer4 zeby sie nie sciagalo całe
+01_L_add_user_page
+01_L_login_page
+
+
+<% request.getAttribute("topicsLayer1List"); %>
+<% request.getAttribute("topicsLayer2List"); %>
+<% request.getAttribute("topicsLayer3List"); %>
+<% request.getAttribute("topicsLayer4List"); %>
+
+
+topicsLayer4List -> topicsLayer4ListWithoutContent
+topicsLayer4ListActive -> topicsLayer4ListActiveWithoutContent
+
+summernote obrazki
+https://amedpal.com/blog/save-images-to-server-summernote.html
+
+uploadsPath=d:\\michal\\java\\git\\MatSmile-project\\src\\main\\webapp\\graphics\\
+
+
+Baza danych odświeżanie
+
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet successfully received from the server was 40 794 850 milliseconds ago.  The last packet sent successfully to the server was 40 794 860 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:172)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2261)
+	at org.hibernate.engine.jdbc.connections.internal.PooledConnections.poll(PooledConnections.java:76)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.getConnection(DriverManagerConnectionProviderImpl.java:187)
+	at org.hibernate.internal.AbstractSessionImpl$NonContextualJdbcConnectionAccess.obtainConnection(AbstractSessionImpl.java:386)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:84)
+	... 141 more
+
+	summernote - przyciski sa opisane i edytowalne w pliku 09_admin_main_page
+
+	edytor równań:
+	spacja \quad
+    enter \\
+
+
+Połączenie z baza danych:
+
+Baza Hekko:
+
+resources / META-INF/persistance.xml
+
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://s53.hekko.net.pl:3306/musialm_matemania?serverTimezone=UTC"/>
+
+            <property name="hibernate.connection.username" value="musialm_matemania"/>
+            <property name="hibernate.connection.password" value="matemania123"/>
+
+
+Baza UniCloud:
+
+ <property name="hibernate.connection.url"
+                      value="jdbc:mysql://node79707-matemaniatest.unicloud.pl/musialm_matemania?serverTimezone=UTC"/>
+
+            <property name="hibernate.connection.username" value="musialm_matemania"/>
+            <property name="hibernate.connection.password" value="matemania123"/>
+
+
+            baza nowa
+            node79705-matemaniatest.unicloud.pl
+            user: musialm_matemania
+            hasło: matemania123
