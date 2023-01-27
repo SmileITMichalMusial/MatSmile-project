@@ -79,12 +79,19 @@
           <!-- Menu Madministratora po lewej -->
           <div class="col-4 col-sm-3">
             <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+
               <a class="nav-link active" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages"
                  role="tab"
                  aria-controls="vert-tabs-messages" aria-selected="true">Menu i zawartość</a>
+
               <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile"
                  role="tab"
                  aria-controls="vert-tabs-profile" aria-selected="false">Zarządzanie użytkownikami</a>
+
+              <a class="nav-link" id="vert-tabs-zadania-tab" data-toggle="pill" href="#vert-tabs-zadania"
+                 role="tab"
+                 aria-controls="vert-tabs-profile" aria-selected="false">Zarządzanie zadaniami</a>
+
               <a class="nav-link" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab"
                  aria-controls="vert-tabs-home" aria-selected="false">Grafika</a>
             </div>
@@ -93,6 +100,8 @@
           <!-- Zawartość strony menu administratora -->
           <div class="col-8 col-sm-9">
             <div class="tab-content" id="vert-tabs-tabContent">
+
+              <!-- Zawartość zakładki Menu i zawartość id="vert-tabs-messages-tab" -->
               <div class="tab-pane text-left fade show active" id="vert-tabs-messages" role="tabpanel"
                    aria-labelledby="vert-tabs-messages-tab">
 
@@ -112,6 +121,8 @@
                 </c:if>
 
               </div>
+
+              <!-- Zawartość zakładki Zarządzanie użytkownikami id="vert-tabs-profile-tab" -->
               <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel"
                    aria-labelledby="vert-tabs-profile-tab">
 
@@ -126,6 +137,17 @@
                 </c:if>
 
               </div>
+
+              <!-- Zawartość zakładki Zarządzanie zadaniami id="vert-tabs-home" -->
+              <div class="tab-pane fade" id="vert-tabs-zadania" role="tabpanel"
+                   aria-labelledby="vert-tabs-zadania-tab">
+
+                <%@include file="06_graphics_admin.jsp" %>
+
+
+              </div>
+
+              <!-- Zawartość zakładki grafika id="vert-tabs-home" -->
               <div class="tab-pane fade" id="vert-tabs-home" role="tabpanel"
                    aria-labelledby="vert-tabs-home-tab">
 
@@ -133,6 +155,9 @@
 
 
               </div>
+
+
+
             </div>
           </div>
 
